@@ -275,6 +275,137 @@
             transform: translateY(-2px);
         }
         
+        /* === زر استعرض جميع المدربين - تم تحسينه === */
+        .browse-coaches-btn {
+            padding: 14px 36px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 17px;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            box-shadow: 0 6px 20px rgba(26, 86, 219, 0.25);
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-width: 220px;
+        }
+        
+        .browse-coaches-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(26, 86, 219, 0.35);
+        }
+        
+        .browse-coaches-btn:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+        
+        .browse-coaches-btn i {
+            transition: transform 0.3s ease;
+        }
+        
+        .browse-coaches-btn:hover i {
+            transform: translateX(5px);
+        }
+        
+        .browse-coaches-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        
+        .browse-coaches-btn:hover:before {
+            transform: translateX(100%);
+        }
+        
+        .browse-coaches-btn.loading {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+        
+        .browse-coaches-btn.loading i {
+            animation: spin 1s linear infinite;
+        }
+        
+        /* === زر استعرض الكورسات - تصميم جديد === */
+        .browse-courses-btn {
+            padding: 14px 36px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 17px;
+            background: var(--gradient-orange);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            box-shadow: 0 6px 20px rgba(245, 158, 11, 0.25);
+            position: relative;
+            overflow: hidden;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            min-width: 220px;
+        }
+        
+        .browse-courses-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 12px 30px rgba(245, 158, 11, 0.35);
+        }
+        
+        .browse-courses-btn:active {
+            transform: translateY(-2px) scale(1.02);
+        }
+        
+        .browse-courses-btn i {
+            transition: transform 0.3s ease;
+        }
+        
+        .browse-courses-btn:hover i {
+            transform: translateX(5px);
+        }
+        
+        .browse-courses-btn:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+        }
+        
+        .browse-courses-btn:hover:before {
+            transform: translateX(100%);
+        }
+        
+        .browse-courses-btn.loading {
+            pointer-events: none;
+            opacity: 0.8;
+        }
+        
+        .browse-courses-btn.loading i {
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
         /* === الهيرو المحسّن === */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
@@ -849,44 +980,6 @@
             display: flex;
             align-items: center;
             gap: 6px;
-        }
-        
-        /* === شريط الإشعارات الذكي === */
-        .smart-notification-bar {
-            background: linear-gradient(90deg, var(--primary-blue), #1e4bb8);
-            color: white;
-            padding: 12px var(--space-xl);
-            text-align: center;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            z-index: 999;
-            transform: translateY(100%);
-            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.1);
-            display: none;
-        }
-        
-        .notification-content {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: var(--space-md);
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .notification-close {
-            background: none;
-            border: none;
-            color: white;
-            cursor: pointer;
-            font-size: 1.2rem;
-            opacity: 0.8;
-            transition: opacity 0.3s;
-        }
-        
-        .notification-close:hover {
-            opacity: 1;
         }
         
         /* === دعوة الانضمام المحسنة === */
@@ -1599,10 +1692,18 @@
                 justify-content: center;
             }
             
-            /* تحسين شريط الإشعارات للجوال */
-            .smart-notification-bar {
-                padding: 12px 15px !important;
-                font-size: 14px;
+            /* تحسين زر استعرض جميع المدربين للجوال */
+            .browse-coaches-btn {
+                padding: 12px 28px !important;
+                font-size: 15px !important;
+                min-width: 200px;
+            }
+            
+            /* تحسين زر استعرض الكورسات للجوال */
+            .browse-courses-btn {
+                padding: 12px 28px !important;
+                font-size: 15px !important;
+                min-width: 200px;
             }
             
             /* تحسين قسم الإحصائيات للجوال */
@@ -1814,6 +1915,20 @@
                 font-size: 14px !important;
             }
             
+            /* تحسين زر استعرض جميع المدربين للشاشات الصغيرة */
+            .browse-coaches-btn {
+                padding: 12px 24px !important;
+                font-size: 14px !important;
+                min-width: 180px;
+            }
+            
+            /* تحسين زر استعرض الكورسات للشاشات الصغيرة */
+            .browse-courses-btn {
+                padding: 12px 24px !important;
+                font-size: 14px !important;
+                min-width: 180px;
+            }
+            
             .coach-stats {
                 flex-direction: column;
                 gap: 10px;
@@ -1847,6 +1962,20 @@
             .trust-icon {
                 font-size: 1rem !important;
                 margin-left: 3px;
+            }
+            
+            /* تحسين زر استعرض جميع المدربين للشاشات الصغيرة جداً */
+            .browse-coaches-btn {
+                padding: 10px 20px !important;
+                min-width: 160px;
+                font-size: 13px !important;
+            }
+            
+            /* تحسين زر استعرض الكورسات للشاشات الصغيرة جداً */
+            .browse-courses-btn {
+                padding: 10px 20px !important;
+                min-width: 160px;
+                font-size: 13px !important;
             }
         }
         
@@ -1999,6 +2128,11 @@
             .btn-primary:hover:after {
                 left: -100%;
             }
+            
+            .browse-coaches-btn:hover,
+            .browse-courses-btn:hover {
+                transform: none !important;
+            }
         }
         
         /* === قائمة الهاتف المحمول === */
@@ -2078,16 +2212,6 @@
     <button class="scroll-top" id="scrollTop" aria-label="العودة للأعلى">
         <i class="fas fa-chevron-up"></i>
     </button>
-    
-    <!-- شريط الإشعارات الذكي -->
-    <div class="smart-notification-bar" id="notificationBar">
-        <div class="notification-content">
-            <span id="notificationMessage">🎉 <strong>مرحباً بك!</strong> تم تسجيل دخولك بنجاح</span>
-            <button class="notification-close" onclick="closeNotification()">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-    </div>
     
     <!-- النافبار العلوية -->
     <nav class="navbar">
@@ -2385,7 +2509,10 @@
             </div>
         </div>
         <div style="text-align: center; margin-top: var(--space-xl);">
-            <button class="btn btn-primary" onclick="showAllCoaches()">استعرض جميع المدربين</button>
+            <button class="browse-coaches-btn focus-ring" onclick="showAllCoaches()">
+                <span>استعرض جميع المدربين</span>
+                <i class="fas fa-arrow-left"></i>
+            </button>
         </div>
     </section>
 
@@ -2466,7 +2593,10 @@
             </div>
         </div>
         <div style="text-align: center; margin-top: var(--space-xl);">
-            <button class="btn btn-primary" onclick="showAllContent()">استكشف مكتبتنا الكاملة</button>
+            <button class="browse-courses-btn focus-ring" onclick="showAllCourses()">
+                <span>استعرض الكورسات</span>
+                <i class="fas fa-arrow-left"></i>
+            </button>
         </div>
     </section>
 
@@ -2657,19 +2787,6 @@
         </div>
     </nav>
 
-    <!-- شريط النشاط الحي -->
-    <div class="live-activity" id="liveActivity">
-        <div class="activity-header">
-            <span style="font-weight: 600;">نشاط حديث</span>
-            <button onclick="closeActivity()" style="background: none; border: none; color: var(--dark-gray); cursor: pointer;">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
-        <div id="activityContent">
-            <!-- سيتم ملؤها بالجافاسكريبت -->
-        </div>
-    </div>
-
     <!-- نموذج تسجيل الدخول -->
     <div id="loginModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 2000; overflow-y: auto;">
         <div style="position: absolute; top: 50%; right: 50%; transform: translate(50%, -50%); background: white; border-radius: 20px; padding: var(--space-xl); width: 90%; max-width: 400px;">
@@ -2800,7 +2917,6 @@
         // === حالة التطبيق ===
         let currentUserType = 'coach';
         let activityInterval;
-        let notificationTimeout;
         
         // === تهيئة الصفحة ===
         document.addEventListener('DOMContentLoaded', function() {
@@ -2831,6 +2947,12 @@
             
             // إعداد قائمة الهاتف المحمول
             setupMobileMenu();
+            
+            // إعداد زر استعرض جميع المدربين
+            setupBrowseCoachesButton();
+            
+            // إعداد زر استعرض الكورسات
+            setupBrowseCoursesButton();
         });
         
         function initPage() {
@@ -2857,6 +2979,32 @@
             if ('scrollBehavior' in document.documentElement.style) {
                 document.documentElement.style.scrollBehavior = 'smooth';
             }
+        }
+        
+        function setupBrowseCoachesButton() {
+            const browseCoachesBtn = document.querySelector('.browse-coaches-btn');
+            
+            // تأثير اللمس للجوال
+            browseCoachesBtn.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.97)';
+            });
+            
+            browseCoachesBtn.addEventListener('touchend', function() {
+                this.style.transform = '';
+            });
+        }
+        
+        function setupBrowseCoursesButton() {
+            const browseCoursesBtn = document.querySelector('.browse-courses-btn');
+            
+            // تأثير اللمس للجوال
+            browseCoursesBtn.addEventListener('touchstart', function() {
+                this.style.transform = 'scale(0.97)';
+            });
+            
+            browseCoursesBtn.addEventListener('touchend', function() {
+                this.style.transform = '';
+            });
         }
         
         function setupMobileMenu() {
@@ -2907,7 +3055,7 @@
             // تحسينات خاصة بالجوال
             if (window.innerWidth <= 768) {
                 // تحسين الضغط على الأزرار للجوال
-                document.querySelectorAll('.btn, .sport-card, .coach-card, .content-card, .job-card').forEach(element => {
+                document.querySelectorAll('.btn, .sport-card, .coach-card, .content-card, .job-card, .browse-coaches-btn, .browse-courses-btn').forEach(element => {
                     element.addEventListener('touchstart', function() {
                         this.style.transform = 'scale(0.97)';
                         this.style.opacity = '0.9';
@@ -2966,128 +3114,7 @@
             });
         }
         
-        // === وظائف الإشعارات ===
-        
-        function showLoginNotification(name) {
-            const notificationBar = document.getElementById('notificationBar');
-            const notificationMessage = document.getElementById('notificationMessage');
-            
-            notificationMessage.innerHTML = `🎉 <strong>مرحباً ${name}!</strong> تم تسجيل دخولك بنجاح`;
-            notificationBar.style.display = 'block';
-            
-            setTimeout(() => {
-                notificationBar.style.transform = 'translateY(0)';
-            }, 100);
-            
-            // إخفاء تلقائي بعد 6 ثوان
-            clearTimeout(notificationTimeout);
-            notificationTimeout = setTimeout(closeNotification, 6000);
-        }
-        
-        function showRegisterNotification(name, userType) {
-            const userTypeText = userType === 'coach' ? 'مدرب' : 
-                                userType === 'athlete' ? 'رياضي' : 
-                                'مؤسسة رياضية';
-            
-            const notificationBar = document.getElementById('notificationBar');
-            const notificationMessage = document.getElementById('notificationMessage');
-            
-            notificationMessage.innerHTML = 
-                `🎉 <strong>مرحباً بك ${name}!</strong> تم إنشاء حسابك كـ${userTypeText} بنجاح`;
-            notificationBar.style.display = 'block';
-            
-            setTimeout(() => {
-                notificationBar.style.transform = 'translateY(0)';
-            }, 100);
-            
-            clearTimeout(notificationTimeout);
-            notificationTimeout = setTimeout(closeNotification, 8000);
-        }
-        
-        function closeNotification() {
-            const notificationBar = document.getElementById('notificationBar');
-            notificationBar.style.transform = 'translateY(100%)';
-            
-            setTimeout(() => {
-                notificationBar.style.display = 'none';
-            }, 500);
-            
-            clearTimeout(notificationTimeout);
-        }
-        
-        // === وظيفة تسجيل الدخول ===
-        function login() {
-            const email = document.getElementById('loginEmail').value;
-            const password = document.getElementById('loginPassword').value;
-            
-            if (!email || !password) {
-                showMessage('يرجى ملء جميع الحقول المطلوبة', 'error');
-                return;
-            }
-            
-            showMessage('جارٍ تسجيل الدخول...', 'info');
-            hideLoginModal();
-            
-            // محاكاة تسجيل الدخول الناجح
-            setTimeout(() => {
-                // إظهار إشعار تسجيل الدخول
-                const name = email.split('@')[0]; // أخذ الجزء الأول من البريد كاسم
-                showLoginNotification(name);
-                showMessage('تم تسجيل الدخول بنجاح!', 'success');
-            }, 1500);
-        }
-        
-        // === وظيفة إنشاء حساب جديد ===
-        function registerNewAccount() {
-            const form = document.getElementById('registerForm');
-            
-            // التحقق من صحة البيانات
-            const fullName = document.getElementById('fullName').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
-            const confirmPassword = document.getElementById('confirmPassword').value;
-            const userType = document.getElementById('userType').value;
-            const sportType = document.getElementById('sportType').value;
-            const country = document.getElementById('country').value;
-            const city = document.getElementById('city').value;
-            const phone = document.getElementById('phone').value;
-            const terms = document.getElementById('terms').checked;
-            
-            // التحقق من صحة البيانات الأساسية
-            if (!fullName || !email || !password || !confirmPassword || !userType || !sportType || !country || !city) {
-                showMessage('يرجى ملء جميع الحقول المطلوبة', 'error');
-                return;
-            }
-            
-            if (!terms) {
-                showMessage('يجب الموافقة على الشروط والأحكام', 'error');
-                return;
-            }
-            
-            if (password !== confirmPassword) {
-                showMessage('كلمتا المرور غير متطابقتين', 'error');
-                return;
-            }
-            
-            if (password.length < 6) {
-                showMessage('كلمة المرور يجب أن تكون 6 أحرف على الأقل', 'error');
-                return;
-            }
-            
-            // عرض رسالة التحميل
-            showMessage('جارٍ إنشاء حسابك...', 'info');
-            hideRegisterModal();
-            
-            // محاكاة إنشاء الحساب
-            setTimeout(() => {
-                showMessage(`تم إنشاء حسابك بنجاح! مرحباً بك ${fullName}`, 'success');
-                
-                // إظهار إشعار إنشاء الحساب
-                showRegisterNotification(fullName, userType);
-            }, 2000);
-        }
-        
-        // === وظيفة الرسائل العادية ===
+        // === وظائف الرسائل العادية ===
         function showMessage(message, type) {
             // إنشاء عنصر الرسالة
             const messageEl = document.createElement('div');
@@ -3272,15 +3299,103 @@
             }, 1000);
         }
         
+        // === زر استعرض جميع المدربين - تم تحسينه ===
         function showAllCoaches() {
-            window.scrollTo({
-                top: document.getElementById('coaches').offsetTop - 80,
-                behavior: 'smooth'
-            });
+            const button = event.currentTarget;
+            const originalHTML = button.innerHTML;
             
+            // تأثير التحميل
+            button.classList.add('loading');
+            button.innerHTML = '<i class="fas fa-spinner"></i> جاري التحميل...';
+            
+            // محاكاة تحميل المدربين
             setTimeout(() => {
-                showMessage('جارٍ تحميل جميع المدربين...', 'info');
-            }, 500);
+                // إظهار رسالة نجاح
+                showMessage('تم تحميل جميع المدربين بنجاح!', 'success');
+                
+                // إضافة مدربين جدد (محاكاة)
+                const coachesGrid = document.querySelector('.coaches-grid');
+                const newCoaches = [
+                    {
+                        name: 'فهد المطيري',
+                        specialty: 'مدرب ألعاب قوى',
+                        location: 'جدة، السعودية',
+                        experience: '7+ عام خبرة',
+                        athletes: '150+ رياضي درّبهم',
+                        rating: '4.7'
+                    },
+                    {
+                        name: 'لمى عبدالله',
+                        specialty: 'مدربة تنس معتمدة',
+                        location: 'المنامة، البحرين',
+                        experience: '9+ عام خبرة',
+                        athletes: '120+ لاعب درّبتهم',
+                        rating: '4.9'
+                    },
+                    {
+                        name: 'ياسر النجار',
+                        specialty: 'أخصائي تأهيل رياضي',
+                        location: 'عمان، الأردن',
+                        experience: '11+ عام خبرة',
+                        athletes: '300+ رياضي تأهلهم',
+                        rating: '4.8'
+                    }
+                ];
+                
+                // إضافة المدربين الجدد
+                newCoaches.forEach(coach => {
+                    const coachCard = document.createElement('div');
+                    coachCard.className = 'coach-card focus-ring';
+                    coachCard.innerHTML = `
+                        <div class="coach-header">
+                            <div class="coach-avatar">${coach.name.charAt(0)}</div>
+                            <div class="coach-info">
+                                <h3>${coach.name}</h3>
+                                <div class="coach-specialty">${coach.specialty}</div>
+                                <div class="coach-location">
+                                    <i class="fas fa-map-marker-alt"></i> ${coach.location}
+                                </div>
+                                <div class="verified-badge" style="margin-top: 6px;">
+                                    <i class="fas fa-check-circle"></i> مدرب موثّق
+                                </div>
+                            </div>
+                        </div>
+                        <p>متخصص في ${coach.specialty.toLowerCase()} مع خبرة طويلة في التدريب الاحترافي</p>
+                        <div class="coach-stats">
+                            <div class="stat">
+                                <div class="stat-number">${coach.experience.split('+')[0]}+</div>
+                                <div class="stat-label">عام خبرة</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">${coach.athletes.split('+')[0]}+</div>
+                                <div class="stat-label">${coach.specialty.includes('تنس') ? 'لاعب درّبتهم' : coach.specialty.includes('تأهيل') ? 'رياضي تأهلهم' : 'رياضي درّبهم'}</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number">${coach.rating}</div>
+                                <div class="stat-label rating">
+                                    ${'<i class="fas fa-star"></i>'.repeat(4)}${coach.rating === '4.7' ? '<i class="fas fa-star-half-alt"></i>' : '<i class="fas fa-star"></i>'}
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline" style="width: 100%; margin-top: var(--space-md);" onclick="viewCoachProfile('${coach.name}')">عرض الملف الشخصي</button>
+                    `;
+                    coachesGrid.appendChild(coachCard);
+                });
+                
+                // إعادة الزر إلى حالته الأصلية
+                button.classList.remove('loading');
+                button.innerHTML = originalHTML;
+                
+                // إظهار رسالة توجيهية
+                showMessage('تم إضافة ٣ مدربين جدد للقائمة', 'info');
+                
+                // تمرير سلس إلى القسم
+                window.scrollTo({
+                    top: document.getElementById('coaches').offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+            }, 2000);
         }
         
         function filterContent(filter) {
@@ -3314,15 +3429,91 @@
             }, 1000);
         }
         
-        function showAllContent() {
-            window.scrollTo({
-                top: document.getElementById('content').offsetTop - 80,
-                behavior: 'smooth'
-            });
+        // === زر استعرض الكورسات - تم تحسينه ===
+        function showAllCourses() {
+            const button = event.currentTarget;
+            const originalHTML = button.innerHTML;
             
+            // تأثير التحميل
+            button.classList.add('loading');
+            button.innerHTML = '<i class="fas fa-spinner"></i> جاري التحميل...';
+            
+            // محاكاة تحميل الكورسات
             setTimeout(() => {
-                showMessage('جارٍ تحميل جميع المحتويات...', 'info');
-            }, 500);
+                // إظهار رسالة نجاح
+                showMessage('تم تحميل جميع الكورسات بنجاح!', 'success');
+                
+                // إضافة كورسات جديدة (محاكاة)
+                const contentGrid = document.querySelector('.content-grid');
+                const newCourses = [
+                    {
+                        title: 'التدريب الذهني للرياضيين',
+                        category: 'دورة تدريبية',
+                        level: 'مستوى متوسط',
+                        duration: '٦ ساعات',
+                        author: 'د. خالد سعيد',
+                        description: 'تعلم تقنيات التدريب الذهني لتعزيز التركيز والأداء الرياضي'
+                    },
+                    {
+                        title: 'الإعداد البدني في كرة السلة',
+                        category: 'دورة تدريبية',
+                        level: 'مستوى متقدم',
+                        duration: '١٠ ساعات',
+                        author: 'أ. محمد عبدالرحمن',
+                        description: 'برامج متقدمة للإعداد البدني للاعبي كرة السلة المحترفين'
+                    },
+                    {
+                        title: 'تحليل البيانات الرياضية',
+                        category: 'دورة تدريبية',
+                        level: 'مستوى مبتدئ',
+                        duration: '٤ ساعات',
+                        author: 'د. نورا العلي',
+                        description: 'أساسيات تحليل البيانات الرياضية لاتخاذ القرارات التدريبية'
+                    }
+                ];
+                
+                // إضافة الكورسات الجديدة
+                newCourses.forEach(course => {
+                    const contentCard = document.createElement('div');
+                    contentCard.className = 'content-card focus-ring';
+                    contentCard.setAttribute('data-type', 'courses');
+                    contentCard.innerHTML = `
+                        <div class="content-image">
+                            <div class="content-level">${course.level}</div>
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <div class="content-info">
+                            <span class="content-category">${course.category}</span>
+                            <h3 class="content-title">${course.title}</h3>
+                            <p>${course.description}</p>
+                            <div class="content-meta">
+                                <div class="content-duration">
+                                    <i class="fas fa-clock"></i> ${course.duration}
+                                </div>
+                                <div class="content-author">
+                                    <i class="fas fa-user"></i> ${course.author}
+                                </div>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline" style="width: 100%; border-top-left-radius: 0; border-top-right-radius: 0;" onclick="viewContent('${course.title}')">ابدأ التعلم</button>
+                    `;
+                    contentGrid.appendChild(contentCard);
+                });
+                
+                // إعادة الزر إلى حالته الأصلية
+                button.classList.remove('loading');
+                button.innerHTML = originalHTML;
+                
+                // إظهار رسالة توجيهية
+                showMessage('تم إضافة ٣ كورسات جديدة للقائمة', 'info');
+                
+                // تمرير سلس إلى القسم
+                window.scrollTo({
+                    top: document.getElementById('content').offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+            }, 2000);
         }
         
         function showRegister() {
@@ -3347,6 +3538,72 @@
             document.body.style.overflow = 'auto';
         }
         
+        // === وظيفة تسجيل الدخول ===
+        function login() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            if (!email || !password) {
+                showMessage('يرجى ملء جميع الحقول المطلوبة', 'error');
+                return;
+            }
+            
+            showMessage('جارٍ تسجيل الدخول...', 'info');
+            hideLoginModal();
+            
+            // محاكاة تسجيل الدخول الناجح
+            setTimeout(() => {
+                showMessage('تم تسجيل الدخول بنجاح!', 'success');
+            }, 1500);
+        }
+        
+        // === وظيفة إنشاء حساب جديد ===
+        function registerNewAccount() {
+            const form = document.getElementById('registerForm');
+            
+            // التحقق من صحة البيانات
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const userType = document.getElementById('userType').value;
+            const sportType = document.getElementById('sportType').value;
+            const country = document.getElementById('country').value;
+            const city = document.getElementById('city').value;
+            const phone = document.getElementById('phone').value;
+            const terms = document.getElementById('terms').checked;
+            
+            // التحقق من صحة البيانات الأساسية
+            if (!fullName || !email || !password || !confirmPassword || !userType || !sportType || !country || !city) {
+                showMessage('يرجى ملء جميع الحقول المطلوبة', 'error');
+                return;
+            }
+            
+            if (!terms) {
+                showMessage('يجب الموافقة على الشروط والأحكام', 'error');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                showMessage('كلمتا المرور غير متطابقتين', 'error');
+                return;
+            }
+            
+            if (password.length < 6) {
+                showMessage('كلمة المرور يجب أن تكون 6 أحرف على الأقل', 'error');
+                return;
+            }
+            
+            // عرض رسالة التحميل
+            showMessage('جارٍ إنشاء حسابك...', 'info');
+            hideRegisterModal();
+            
+            // محاكاة إنشاء الحساب
+            setTimeout(() => {
+                showMessage(`تم إنشاء حسابك بنجاح! مرحباً بك ${fullName}`, 'success');
+            }, 2000);
+        }
+        
         // === محاكاة النشاط الحي ===
         function startActivitySimulation() {
             const activities = [
@@ -3363,13 +3620,6 @@
                 const activity = activities[index % activities.length];
                 updateActivityFeed(activity);
                 index++;
-                
-                // إظهار شريط النشاط تلقائياً على الجوال
-                if (window.innerWidth <= 768 && index === 1) {
-                    setTimeout(() => {
-                        document.getElementById('liveActivity').style.display = 'block';
-                    }, 2000);
-                }
             }, 8000);
         }
         
@@ -3394,10 +3644,6 @@
             }
         }
         
-        function closeActivity() {
-            document.getElementById('liveActivity').style.display = 'none';
-        }
-        
         // === تحسينات إضافية ===
         
         // تحسين تجربة لوحة المفاتيح
@@ -3405,8 +3651,6 @@
             if (e.key === 'Escape') {
                 hideRegisterModal();
                 hideLoginModal();
-                closeNotification();
-                closeActivity();
                 
                 // إغلاق قائمة الجوال
                 const hamburgerMenu = document.getElementById('hamburgerMenu');
