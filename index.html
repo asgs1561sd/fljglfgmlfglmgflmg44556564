@@ -1,0 +1,3514 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>رياضي - رفع مستوى التدريب الرياضي. معًا.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            /* الألوان الأساسية - محفوظة كما هي */
+            --primary-blue: #1A56DB;
+            --pure-white: #FFFFFF;
+            --light-gray: #F9FAFB;
+            --success-green: #10B981;
+            --energy-orange: #F59E0B;
+            --dark-gray: #374151;
+            --border-gray: #E5E7EB;
+            
+            /* تحسينات جديدة */
+            --gradient-primary: linear-gradient(135deg, #1A56DB, #1e4bb8);
+            --gradient-success: linear-gradient(135deg, #10B981, #0da271);
+            --gradient-orange: linear-gradient(135deg, #F59E0B, #e67e22);
+            --shadow-layered: 0 2px 4px rgba(0,0,0,0.05), 0 4px 8px rgba(0,0,0,0.03), 0 8px 16px rgba(0,0,0,0.02);
+            --shadow-lifted: 0 10px 25px rgba(0, 0, 0, 0.1);
+            
+            /* النظام الشبكي - محسن */
+            --space-xs: 8px;
+            --space-sm: 16px;
+            --space-md: 24px;
+            --space-lg: 32px;
+            --space-xl: 48px;
+            --space-xxl: 64px;
+            
+            /* الخطوط - محسن */
+            --font-arabic: 'IBM Plex Sans Arabic', sans-serif;
+            --font-english: 'Inter', sans-serif;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        body {
+            font-family: var(--font-arabic);
+            background-color: var(--light-gray);
+            color: var(--dark-gray);
+            line-height: 1.6;
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+        
+        /* === تحسينات عامة === */
+        
+        /* تحسين Typography */
+        h1, h2, h3 {
+            letter-spacing: -0.025em;
+            line-height: 1.2;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            opacity: 0.95;
+        }
+        
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 500;
+            opacity: 0.9;
+        }
+        
+        /* تحسينات الحركات */
+        .smooth-transition {
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+        
+        /* === النافبار المحسنة === */
+        .navbar {
+            background-color: var(--pure-white);
+            padding: var(--space-sm) var(--space-xl);
+            box-shadow: var(--shadow-layered);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            position: relative;
+        }
+        
+        .logo-text {
+            font-size: 28px;
+            font-weight: 700;
+            color: var(--primary-blue);
+            margin-right: var(--space-sm);
+            position: relative;
+        }
+        
+        /* شارة PRO */
+        .premium-badge {
+            position: absolute;
+            top: -8px;
+            right: -10px;
+            background: var(--gradient-success);
+            color: white;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+        
+        .logo-tagline {
+            font-size: 14px;
+            color: var(--dark-gray);
+            border-right: 2px solid var(--primary-blue);
+            padding-right: var(--space-sm);
+        }
+        
+        /* === الأشرطة الثلاثة للقائمة === */
+        .hamburger-menu {
+            display: none;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+            margin-left: var(--space-md);
+        }
+        
+        .hamburger-menu span {
+            display: block;
+            width: 100%;
+            height: 3px;
+            background-color: var(--dark-gray);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        
+        .hamburger-menu.active span:nth-child(1) {
+            transform: rotate(45deg) translate(6px, 6px);
+        }
+        
+        .hamburger-menu.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger-menu.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+        
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: var(--space-lg);
+            margin: 0;
+            padding: 0;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-weight: 500;
+            transition: all 0.3s;
+            padding: var(--space-xs) 0;
+            position: relative;
+            font-size: 15px;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-blue);
+        }
+        
+        .nav-link.active {
+            color: var(--primary-blue);
+            font-weight: 600;
+        }
+        
+        .nav-link.active:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+        
+        .nav-actions {
+            display: flex;
+            gap: var(--space-sm);
+            align-items: center;
+        }
+        
+        /* زر ذكي مع حركة جديدة */
+        .btn {
+            padding: 12px 28px;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            border: none;
+            font-family: var(--font-arabic);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .btn:active {
+            transform: scale(0.98);
+        }
+        
+        .btn-primary {
+            background: var(--gradient-primary);
+            color: var(--pure-white);
+            box-shadow: 0 4px 12px rgba(26, 86, 219, 0.25);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(26, 86, 219, 0.35);
+        }
+        
+        .btn-primary:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.7s;
+        }
+        
+        .btn-primary:hover:after {
+            left: 100%;
+        }
+        
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary-blue);
+            border: 2px solid var(--primary-blue);
+        }
+        
+        .btn-secondary:hover {
+            background-color: rgba(26, 86, 219, 0.08);
+            transform: translateY(-2px);
+        }
+        
+        /* === الهيرو المحسّن === */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: var(--pure-white);
+            padding: var(--space-xxl) var(--space-xl);
+            text-align: center;
+            margin-top: 80px;
+            min-height: 85vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 30% 50%, rgba(26, 86, 219, 0.2) 0%, transparent 50%);
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: var(--space-md);
+            line-height: 1.1;
+            background: linear-gradient(to right, #fff, #e6f7ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: fadeInUp 0.8s ease-out;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: var(--space-xl);
+            opacity: 0.9;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+        
+        .hero-cta {
+            font-size: 1.25rem;
+            padding: 18px 48px;
+            animation: fadeInUp 0.8s ease-out 0.4s both;
+        }
+        
+        /* === مؤشرات الثقة === */
+        .trust-indicators {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-xl);
+            margin-top: var(--space-xl);
+            flex-wrap: wrap;
+            animation: fadeInUp 0.8s ease-out 0.6s both;
+        }
+        
+        .trust-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            background: rgba(255, 255, 255, 0.1);
+            padding: var(--space-sm) var(--space-md);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .trust-icon {
+            color: var(--success-green);
+            font-size: 1.5rem;
+        }
+        
+        /* === أقسام الرياضات المحسنة === */
+        .sports-section {
+            padding: var(--space-xxl) var(--space-xl);
+            background-color: var(--pure-white);
+            position: relative;
+        }
+        
+        .sports-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(26, 86, 219, 0.03) 0%, transparent 100%);
+            pointer-events: none;
+        }
+        
+        /* === تحسين عناوين الأقسام === */
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: var(--space-xl);
+            color: var(--dark-gray);
+            position: relative;
+            display: block;
+            padding: 0 var(--space-lg);
+        }
+        
+        .section-title-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+        }
+        
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -12px;
+            right: 50%;
+            transform: translateX(50%);
+            width: 80px;
+            height: 4px;
+            background: var(--gradient-primary);
+            border-radius: 2px;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #6B7280;
+            max-width: 800px;
+            margin: 0 auto var(--space-xl) auto;
+            line-height: 1.6;
+            padding: 0 var(--space-lg);
+        }
+        
+        .sports-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: var(--space-lg);
+            max-width: 1200px;
+            margin: var(--space-xl) auto;
+        }
+        
+        .sport-card {
+            background-color: var(--pure-white);
+            border-radius: 20px;
+            padding: var(--space-xl);
+            text-align: center;
+            box-shadow: var(--shadow-layered);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            border: 1px solid var(--border-gray);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .sport-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: var(--shadow-lifted);
+            border-color: var(--primary-blue);
+        }
+        
+        .sport-card:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent, rgba(26, 86, 219, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .sport-card:hover:after {
+            opacity: 1;
+        }
+        
+        .sport-icon {
+            font-size: 3rem;
+            color: var(--primary-blue);
+            margin-bottom: var(--space-md);
+            position: relative;
+            z-index: 1;
+        }
+        
+        .sport-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* === قسم القيمة المحسن === */
+        .value-section {
+            padding: var(--space-xxl) var(--space-xl);
+            background-color: var(--light-gray);
+            position: relative;
+        }
+        
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: var(--space-xl);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .value-card {
+            background-color: var(--pure-white);
+            border-radius: 20px;
+            padding: var(--space-xl);
+            box-shadow: var(--shadow-layered);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            border: 1px solid transparent;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lifted);
+            border-color: var(--primary-blue);
+        }
+        
+        .value-card:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gradient-primary);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease;
+        }
+        
+        .value-card:hover:before {
+            transform: scaleX(1);
+        }
+        
+        .value-icon {
+            font-size: 3rem;
+            color: var(--primary-blue);
+            margin-bottom: var(--space-md);
+            display: inline-block;
+            padding: var(--space-sm);
+            background: rgba(26, 86, 219, 0.1);
+            border-radius: 16px;
+        }
+        
+        .value-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            color: var(--dark-gray);
+        }
+        
+        /* === قسم المدربون المحسن === */
+        .coaches-section {
+            padding: var(--space-xxl) var(--space-xl);
+            background-color: var(--pure-white);
+            position: relative;
+        }
+        
+        .coaches-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.03) 0%, transparent 100%);
+            pointer-events: none;
+        }
+        
+        .coaches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: var(--space-xl);
+            max-width: 1200px;
+            margin: var(--space-xl) auto;
+        }
+        
+        .coach-card {
+            background-color: var(--pure-white);
+            border-radius: 20px;
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-layered);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            border: 1px solid var(--border-gray);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .coach-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: var(--shadow-lifted);
+            border-color: var(--success-green);
+        }
+        
+        .coach-card:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, transparent, rgba(16, 185, 129, 0.05));
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .coach-card:hover:after {
+            opacity: 1;
+        }
+        
+        .coach-header {
+            display: flex;
+            align-items: center;
+            gap: var(--space-md);
+            margin-bottom: var(--space-md);
+        }
+        
+        .coach-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: var(--gradient-success);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 28px;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        
+        .coach-info h3 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        
+        .coach-specialty {
+            color: var(--success-green);
+            font-weight: 500;
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+        
+        .coach-location {
+            color: #6B7280;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .coach-stats {
+            display: flex;
+            justify-content: space-between;
+            margin-top: var(--space-md);
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--border-gray);
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--dark-gray);
+        }
+        
+        .stat-label {
+            font-size: 0.8rem;
+            color: #6B7280;
+            margin-top: 4px;
+        }
+        
+        .verified-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--success-green);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        /* === قسم المحتوى المهني المحسن === */
+        .content-section {
+            padding: var(--space-xxl) var(--space-xl);
+            background-color: var(--light-gray);
+            position: relative;
+        }
+        
+        .content-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.03) 0%, transparent 100%);
+            pointer-events: none;
+        }
+        
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: var(--space-xl);
+            max-width: 1200px;
+            margin: var(--space-xl) auto;
+        }
+        
+        .content-card {
+            background-color: var(--pure-white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-layered);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            border: 1px solid var(--border-gray);
+            position: relative;
+        }
+        
+        .content-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-lifted);
+            border-color: var(--energy-orange);
+        }
+        
+        .content-image {
+            width: 100%;
+            height: 200px;
+            background: var(--gradient-orange);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .content-image i {
+            position: absolute;
+            bottom: -20px;
+            left: 20px;
+            font-size: 120px;
+            color: rgba(255, 255, 255, 0.2);
+        }
+        
+        .content-level {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        
+        .content-info {
+            padding: var(--space-lg);
+        }
+        
+        .content-category {
+            color: var(--energy-orange);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: var(--space-sm);
+            display: block;
+        }
+        
+        .content-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: var(--space-sm);
+            line-height: 1.4;
+        }
+        
+        .content-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: var(--space-md);
+            padding-top: var(--space-md);
+            border-top: 1px solid var(--border-gray);
+            font-size: 0.85rem;
+            color: #6B7280;
+        }
+        
+        .content-duration {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        /* === الوظائف المحسنة === */
+        .jobs-section {
+            padding: var(--space-xxl) var(--space-xl);
+            background-color: var(--pure-white);
+        }
+        
+        .jobs-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(380px, 1fr));
+            gap: var(--space-lg);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .job-card {
+            background-color: var(--pure-white);
+            border-radius: 20px;
+            padding: var(--space-lg);
+            box-shadow: var(--shadow-layered);
+            border-left: 5px solid var(--success-green);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-gray);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lifted);
+        }
+        
+        .job-card:before {
+            content: 'فرصة جديدة';
+            position: absolute;
+            top: 12px;
+            left: 12px;
+            background: var(--gradient-success);
+            color: white;
+            font-size: 11px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+        
+        .job-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: var(--space-xs);
+            color: var(--dark-gray);
+            padding-top: 8px;
+        }
+        
+        .job-meta {
+            display: flex;
+            gap: var(--space-md);
+            margin-bottom: var(--space-sm);
+            color: #6B7280;
+            font-size: 14px;
+            flex-wrap: wrap;
+        }
+        
+        .job-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        /* === شريط الإشعارات الذكي === */
+        .smart-notification-bar {
+            background: linear-gradient(90deg, var(--primary-blue), #1e4bb8);
+            color: white;
+            padding: 12px var(--space-xl);
+            text-align: center;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            z-index: 999;
+            transform: translateY(100%);
+            transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+            display: none;
+        }
+        
+        .notification-content {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: var(--space-md);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .notification-close {
+            background: none;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2rem;
+            opacity: 0.8;
+            transition: opacity 0.3s;
+        }
+        
+        .notification-close:hover {
+            opacity: 1;
+        }
+        
+        /* === دعوة الانضمام المحسنة === */
+        .cta-section {
+            padding: var(--space-xxl) var(--space-xl);
+            background: var(--gradient-primary);
+            color: var(--pure-white);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .cta-section:before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        .cta-container {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .cta-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: var(--space-md);
+            color: var(--pure-white); /* تم تغيير اللون إلى الأبيض */
+        }
+        
+        .cta-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-xl);
+            margin-bottom: var(--space-xl);
+            flex-wrap: wrap;
+        }
+        
+        .stat-item {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: var(--space-md) var(--space-lg);
+            border-radius: 16px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s;
+        }
+        
+        .stat-item:hover {
+            transform: scale(1.05);
+        }
+        
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+            color: var(--pure-white); /* تم تغيير اللون إلى الأبيض */
+        }
+        
+        .stat-label {
+            font-size: 1rem;
+            opacity: 0.9;
+            color: var(--pure-white); /* تم تغيير اللون إلى الأبيض */
+        }
+        
+        /* === الفوتر المحسن === */
+        .footer {
+            background-color: var(--dark-gray);
+            color: var(--pure-white);
+            padding: var(--space-xxl) var(--space-xl);
+            position: relative;
+        }
+        
+        .footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: var(--space-xl);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: var(--space-md);
+            color: var(--pure-white);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-link {
+            margin-bottom: var(--space-sm);
+        }
+        
+        .footer-link a {
+            color: #D1D5DB;
+            text-decoration: none;
+            transition: all 0.3s;
+            display: inline-block;
+            position: relative;
+            padding-right: 0;
+        }
+        
+        .footer-link a:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            right: 0;
+            width: 0;
+            height: 1px;
+            background: var(--primary-blue);
+            transition: width 0.3s;
+        }
+        
+        .footer-link a:hover {
+            color: var(--pure-white);
+            padding-right: 8px;
+        }
+        
+        .footer-link a:hover:after {
+            width: 100%;
+        }
+        
+        /* شارات الثقة في الفوتر */
+        .trust-badges {
+            display: flex;
+            gap: var(--space-md);
+            margin-top: var(--space-lg);
+            flex-wrap: wrap;
+        }
+        
+        .trust-badge {
+            background: rgba(255, 255, 255, 0.1);
+            padding: var(--space-sm) var(--space-md);
+            border-radius: 8px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: var(--space-xxl);
+            padding-top: var(--space-lg);
+            border-top: 1px solid #4B5563;
+            color: #9CA3AF;
+            font-size: 14px;
+        }
+        
+        /* === Skeleton Loading === */
+        .skeleton {
+            background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+            background-size: 1000px 100%;
+            animation: shimmer 1.5s infinite;
+            border-radius: 8px;
+        }
+        
+        /* === شريط التقدم الذكي === */
+        .progress-indicator {
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 0%;
+            height: 3px;
+            background: var(--gradient-primary);
+            z-index: 1001;
+            transition: width 0.3s ease;
+        }
+        
+        /* === زر العودة للأعلى === */
+        .scroll-top {
+            position: fixed;
+            bottom: 30px;
+            left: 30px;
+            width: 50px;
+            height: 50px;
+            background: var(--gradient-primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: none;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            box-shadow: 0 4px 15px rgba(26, 86, 219, 0.3);
+            transition: all 0.3s;
+            z-index: 999;
+        }
+        
+        .scroll-top:hover {
+            transform: translateY(-5px) scale(1.1);
+            box-shadow: 0 8px 25px rgba(26, 86, 219, 0.4);
+        }
+        
+        /* === شريط النشاط الحي === */
+        .live-activity {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            background: white;
+            border-radius: 12px;
+            padding: var(--space-sm);
+            box-shadow: var(--shadow-lifted);
+            width: 280px;
+            display: none;
+            z-index: 998;
+            border: 1px solid var(--border-gray);
+        }
+        
+        .activity-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--space-sm);
+            padding-bottom: var(--space-xs);
+            border-bottom: 1px solid var(--border-gray);
+        }
+        
+        .activity-item {
+            display: flex;
+            align-items: center;
+            gap: var(--space-sm);
+            padding: var(--space-xs) 0;
+            animation: slideIn 0.5s ease;
+        }
+        
+        .activity-avatar {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            background: var(--gradient-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 14px;
+        }
+        
+        /* === أنيميشن === */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes shimmer {
+            0% { background-position: -1000px 0; }
+            100% { background-position: 1000px 0; }
+        }
+        
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        /* === تجربة الموبايل الممتازة === */
+        .mobile-bottom-nav {
+            display: none;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            background: white;
+            box-shadow: 0 -2px 20px rgba(0,0,0,0.1);
+            z-index: 1000;
+            padding: var(--space-sm) var(--space-md);
+        }
+        
+        .mobile-nav-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: var(--space-sm);
+        }
+        
+        .mobile-nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-size: 12px;
+            padding: var(--space-xs);
+            border-radius: 10px;
+            transition: all 0.3s;
+        }
+        
+        .mobile-nav-item.active {
+            background: rgba(26, 86, 219, 0.1);
+            color: var(--primary-blue);
+        }
+        
+        .mobile-nav-icon {
+            font-size: 1.25rem;
+            margin-bottom: 4px;
+        }
+        
+        /* === تحسينات المدخلات === */
+        .form-input, .form-select {
+            width: 100%;
+            padding: 14px 18px;
+            border: 2px solid var(--border-gray);
+            border-radius: 12px;
+            font-size: 16px;
+            font-family: var(--font-arabic);
+            transition: all 0.3s;
+            background: white;
+            margin-bottom: var(--space-sm);
+        }
+        
+        .form-input:focus, .form-select:focus {
+            outline: none;
+            border-color: var(--primary-blue);
+            box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.15);
+            transform: translateY(-2px);
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+            color: var(--dark-gray);
+        }
+        
+        .form-group {
+            margin-bottom: var(--space-md);
+        }
+        
+        .required {
+            color: #EF4444;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: var(--space-md);
+        }
+        
+        .checkbox-group input {
+            margin-left: 10px;
+            margin-top: 4px;
+        }
+        
+        /* === تحسينات الاستجابة === */
+        @media (max-width: 1200px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .sports-grid, .coaches-grid, .content-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            }
+            
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 992px) {
+            .nav-menu {
+                display: none;
+            }
+            
+            .hamburger-menu {
+                display: flex;
+            }
+            
+            .hero {
+                min-height: 70vh;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.1rem;
+            }
+            
+            .mobile-bottom-nav {
+                display: block;
+            }
+            
+            .scroll-top {
+                left: 20px;
+                bottom: 80px;
+            }
+            
+            .coaches-grid, .content-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            /* === إصلاحات الجوال === */
+            body {
+                font-size: 15px;
+                line-height: 1.6;
+                text-rendering: optimizeLegibility;
+                -webkit-font-smoothing: antialiased;
+            }
+            
+            input, textarea, select {
+                font-size: 16px !important;
+            }
+            
+            /* تحسين النافبار للجوال */
+            .navbar {
+                padding: 12px 15px !important;
+            }
+            
+            .nav-container {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+            }
+            
+            .logo-text {
+                font-size: 24px !important;
+            }
+            
+            .logo-tagline {
+                display: none;
+            }
+            
+            .nav-actions {
+                display: none !important;
+            }
+            
+            .hamburger-menu {
+                display: flex;
+                margin-left: 0;
+            }
+            
+            /* تحسين الهيرو للجوال */
+            .hero {
+                margin-top: 60px;
+                min-height: 70vh !important;
+                padding: 40px 20px !important;
+                background-attachment: scroll !important;
+            }
+            
+            .hero h1 {
+                font-size: 2.2rem !important;
+                line-height: 1.2 !important;
+                padding: 0 10px;
+                margin-bottom: 20px !important;
+            }
+            
+            .hero p {
+                font-size: 1.1rem !important;
+                padding: 0 10px;
+                margin-bottom: 30px !important;
+            }
+            
+            .hero-cta {
+                padding: 16px 32px !important;
+                font-size: 1.1rem !important;
+                width: 90%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+            
+            /* === تحسين مؤشرات الثقة للهاتف === */
+            .trust-indicators {
+                flex-direction: row !important;
+                gap: 8px !important;
+                align-items: center;
+                margin-top: 30px !important;
+                width: 100%;
+                justify-content: center;
+                flex-wrap: nowrap;
+                overflow-x: auto;
+                padding-bottom: 10px;
+                -webkit-overflow-scrolling: touch;
+                justify-content: flex-start;
+                padding: 0 15px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            
+            .trust-indicators::-webkit-scrollbar {
+                display: none;
+            }
+            
+            .trust-item {
+                width: auto !important;
+                max-width: none;
+                padding: 10px 12px !important;
+                font-size: 13px;
+                flex-shrink: 0;
+                white-space: nowrap;
+                min-width: 120px;
+            }
+            
+            .trust-icon {
+                font-size: 1.2rem !important;
+                margin-left: 6px;
+            }
+            
+            /* ترتيب العناصر في الهاتف: منصة موثوقة أولاً، ثم عالمية المضمون، ثم احترافية مطلقة */
+            .trust-item:nth-child(1) {
+                order: 1; /* منصة موثوقة */
+            }
+            
+            .trust-item:nth-child(2) {
+                order: 2; /* عالمية المضمون */
+            }
+            
+            .trust-item:nth-child(3) {
+                order: 3; /* احترافية مطلقة */
+            }
+            
+            /* تحسين العناوين */
+            .section-title {
+                font-size: 1.8rem !important;
+                text-align: center;
+                padding: 0 15px;
+                margin-bottom: 20px !important;
+                line-height: 1.3;
+            }
+            
+            .section-title:after {
+                bottom: -8px;
+                width: 60px;
+                height: 3px;
+            }
+            
+            .section-subtitle {
+                font-size: 1rem;
+                padding: 0 15px;
+                margin-bottom: 30px !important;
+            }
+            
+            /* تحسين الشبكات للجوال */
+            .sports-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 15px !important;
+                padding: 0 15px;
+                margin: 20px auto !important;
+            }
+            
+            .sport-card {
+                padding: 20px 15px !important;
+                margin: 0;
+                border-radius: 15px !important;
+                min-height: 140px;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+            }
+            
+            .sport-icon {
+                font-size: 2.5rem !important;
+                margin-bottom: 15px !important;
+            }
+            
+            .sport-name {
+                font-size: 1.1rem !important;
+                text-align: center;
+            }
+            
+            .coaches-grid {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+                padding: 0 15px;
+                margin: 20px auto !important;
+            }
+            
+            .coach-card {
+                padding: 20px 15px !important;
+                margin: 0;
+                border-radius: 15px !important;
+            }
+            
+            .coach-header {
+                flex-direction: column;
+                text-align: center;
+                gap: 15px !important;
+            }
+            
+            .coach-avatar {
+                width: 70px !important;
+                height: 70px !important;
+                font-size: 24px !important;
+            }
+            
+            .coach-info h3 {
+                font-size: 1.3rem !important;
+            }
+            
+            .coach-stats {
+                flex-direction: row;
+                justify-content: space-around;
+                text-align: center;
+                margin-top: 20px !important;
+                padding-top: 20px !important;
+            }
+            
+            .stat {
+                flex: 1;
+            }
+            
+            .content-grid {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+                padding: 0 15px;
+                margin: 20px auto !important;
+            }
+            
+            .content-card {
+                border-radius: 15px !important;
+                overflow: hidden;
+            }
+            
+            .content-image {
+                height: 150px !important;
+            }
+            
+            .content-image i {
+                font-size: 80px !important;
+                bottom: -10px !important;
+            }
+            
+            .content-info {
+                padding: 20px 15px !important;
+            }
+            
+            .value-grid {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+                padding: 0 15px;
+            }
+            
+            .value-card {
+                padding: 20px 15px !important;
+                margin: 0;
+                border-radius: 15px !important;
+            }
+            
+            .value-icon {
+                font-size: 2.5rem !important;
+                padding: 12px !important;
+            }
+            
+            .jobs-grid {
+                grid-template-columns: 1fr !important;
+                gap: 20px !important;
+                padding: 0 15px;
+            }
+            
+            .job-card {
+                padding: 20px 15px !important;
+                margin: 0;
+                border-radius: 15px !important;
+            }
+            
+            /* تحسين الأزرار للجوال */
+            .btn {
+                padding: 14px 24px !important;
+                font-size: 15px !important;
+                min-height: 48px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+            
+            /* تحسين شريط الإشعارات للجوال */
+            .smart-notification-bar {
+                padding: 12px 15px !important;
+                font-size: 14px;
+            }
+            
+            /* تحسين قسم الإحصائيات للجوال */
+            .cta-stats {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 15px !important;
+                padding: 0 15px;
+            }
+            
+            .stat-item {
+                padding: 15px !important;
+                border-radius: 12px !important;
+            }
+            
+            .stat-number {
+                font-size: 1.8rem !important;
+            }
+            
+            .stat-label {
+                font-size: 0.9rem !important;
+            }
+            
+            /* تحسين الفلاتر للجوال */
+            .filter-bar {
+                overflow-x: auto;
+                flex-wrap: nowrap;
+                padding: 0 15px 15px 15px;
+                margin: 0 0 20px 0;
+                -webkit-overflow-scrolling: touch;
+                justify-content: flex-start;
+            }
+            
+            .filter-bar::-webkit-scrollbar {
+                display: none;
+            }
+            
+            .filter-btn {
+                white-space: nowrap;
+                flex-shrink: 0;
+                padding: 10px 16px !important;
+                font-size: 14px !important;
+                margin: 0 5px;
+            }
+            
+            /* تحسين شريط النشاط للجوال */
+            .live-activity {
+                width: calc(100% - 30px) !important;
+                right: 15px !important;
+                bottom: 90px !important;
+            }
+            
+            /* تحسين زر العودة للأعلى للجوال */
+            .scroll-top {
+                left: 15px !important;
+                bottom: 90px !important;
+                width: 45px !important;
+                height: 45px !important;
+            }
+            
+            /* تحسين النماذج للجوال */
+            #loginModal > div,
+            #registerModal > div {
+                width: 90% !important;
+                max-width: 90% !important;
+                top: 50% !important;
+                transform: translate(50%, -50%) !important;
+                max-height: 85vh !important;
+                overflow-y: auto !important;
+                padding: 25px 20px !important;
+                border-radius: 15px !important;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr !important;
+                gap: 15px !important;
+            }
+            
+            .form-input, .form-select {
+                padding: 14px 16px !important;
+                font-size: 16px !important;
+            }
+            
+            /* تحسين الفوتر للجوال */
+            .footer {
+                padding: 40px 20px !important;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr !important;
+                gap: 30px !important;
+            }
+            
+            .trust-badges {
+                justify-content: center;
+                gap: 10px;
+            }
+            
+            .trust-badge {
+                padding: 10px 15px !important;
+                font-size: 13px;
+            }
+            
+            /* تحسين هوامش وأحجام الأقسام */
+            .sports-section,
+            .value-section,
+            .coaches-section,
+            .content-section,
+            .jobs-section,
+            .cta-section {
+                padding: 40px 0 !important;
+            }
+            
+            /* إلغاء تأثيرات التحويم على الجوال */
+            .sport-card:hover,
+            .coach-card:hover,
+            .content-card:hover,
+            .value-card:hover,
+            .job-card:hover {
+                transform: none !important;
+                box-shadow: var(--shadow-layered) !important;
+            }
+            
+            /* تحسين شريط التنقل السفلي */
+            .mobile-bottom-nav {
+                display: block;
+            }
+            
+            .mobile-nav-item {
+                padding: 10px 5px;
+            }
+            
+            /* منع التمرير الأفقية غير المقصودة */
+            html, body {
+                overflow-x: hidden;
+                max-width: 100%;
+                position: relative;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            /* === تحسينات للشاشات الصغيرة جداً === */
+            .hero h1 {
+                font-size: 1.8rem !important;
+            }
+            
+            .hero p {
+                font-size: 1rem !important;
+            }
+            
+            /* تحسين مؤشرات الثقة للشاشات الصغيرة جداً */
+            .trust-indicators {
+                gap: 6px !important;
+                padding: 0 10px;
+            }
+            
+            .trust-item {
+                padding: 8px 10px !important;
+                font-size: 12px !important;
+                min-width: 110px;
+            }
+            
+            .trust-icon {
+                font-size: 1.1rem !important;
+                margin-left: 4px;
+            }
+            
+            .sports-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
+                gap: 10px !important;
+                padding: 0 10px;
+            }
+            
+            .sport-card {
+                padding: 15px 10px !important;
+                min-height: 120px;
+            }
+            
+            .sport-icon {
+                font-size: 2rem !important;
+                margin-bottom: 10px !important;
+            }
+            
+            .sport-name {
+                font-size: 1rem !important;
+            }
+            
+            .section-title {
+                font-size: 1.6rem !important;
+                padding: 0 10px;
+            }
+            
+            .section-subtitle {
+                font-size: 0.9rem;
+                padding: 0 10px;
+            }
+            
+            .cta-stats {
+                grid-template-columns: 1fr !important;
+            }
+            
+            .hero-cta {
+                width: 100%;
+                max-width: 100%;
+                padding: 14px 20px !important;
+            }
+            
+            .btn {
+                padding: 12px 20px !important;
+                font-size: 14px !important;
+            }
+            
+            .coach-stats {
+                flex-direction: column;
+                gap: 10px;
+            }
+            
+            .stat {
+                margin-bottom: 10px;
+            }
+            
+            .mobile-bottom-nav {
+                padding: 10px 15px !important;
+            }
+            
+            .mobile-nav-icon {
+                font-size: 1.1rem !important;
+            }
+            
+            .mobile-nav-item {
+                font-size: 11px !important;
+            }
+        }
+        
+        @media (max-width: 360px) {
+            /* تحسين مؤشرات الثقة للشاشات الصغيرة جداً (مثل iPhone SE) */
+            .trust-item {
+                min-width: 100px;
+                padding: 8px 8px !important;
+                font-size: 11px !important;
+            }
+            
+            .trust-icon {
+                font-size: 1rem !important;
+                margin-left: 3px;
+            }
+        }
+        
+        /* === أقصى حجم للشاشة === */
+        @media (min-width: 1400px) {
+            .nav-container,
+            .sports-grid,
+            .coaches-grid,
+            .content-grid,
+            .jobs-grid,
+            .value-grid,
+            .footer-grid,
+            .cta-container,
+            .section-title-container {
+                max-width: 1320px;
+            }
+        }
+        
+        /* === تحسينات أداء التحميل === */
+        .lazy-load {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+        
+        .lazy-load.loaded {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* === تأثيرات التركيز === */
+        .focus-ring {
+            position: relative;
+        }
+        
+        .focus-ring:focus-visible {
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(26, 86, 219, 0.5);
+        }
+        
+        /* === تحسينات التمرير === */
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        /* === عناصر الإحساس المستقبلي === */
+        .future-feature {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .future-feature:after {
+            content: 'قريباً';
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background: var(--gradient-success);
+            color: white;
+            font-size: 11px;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-weight: 600;
+            z-index: 1;
+        }
+        
+        .ai-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 8px;
+        }
+        
+        /* === تحسينات نموذج التسجيل === */
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-md);
+        }
+        
+        @media (max-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* === تصنيفات النجوم === */
+        .rating {
+            color: #F59E0B;
+            font-size: 0.9rem;
+        }
+        
+        /* === أزرار إضافية === */
+        .btn-outline {
+            background: transparent;
+            color: var(--dark-gray);
+            border: 2px solid var(--border-gray);
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+        
+        /* === التصفية === */
+        .filter-bar {
+            display: flex;
+            justify-content: center;
+            gap: var(--space-sm);
+            margin-bottom: var(--space-xl);
+            flex-wrap: wrap;
+        }
+        
+        .filter-btn {
+            padding: 10px 20px;
+            background: white;
+            border: 2px solid var(--border-gray);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-weight: 500;
+        }
+        
+        .filter-btn.active {
+            background: var(--primary-blue);
+            color: white;
+            border-color: var(--primary-blue);
+        }
+        
+        .filter-btn:hover {
+            border-color: var(--primary-blue);
+            color: var(--primary-blue);
+        }
+        
+        /* === تحسينات اللمس === */
+        @media (hover: none) and (pointer: coarse) {
+            .btn, .sport-card, .coach-card, .content-card {
+                cursor: default;
+            }
+            
+            .btn:hover, .sport-card:hover, .coach-card:hover, .content-card:hover {
+                transform: none !important;
+            }
+            
+            .btn-primary:hover:after {
+                left: -100%;
+            }
+        }
+        
+        /* === قائمة الهاتف المحمول === */
+        .mobile-menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1999;
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -300px;
+            width: 280px;
+            height: 100%;
+            background: white;
+            box-shadow: -2px 0 20px rgba(0,0,0,0.1);
+            z-index: 2000;
+            transition: right 0.3s ease;
+            overflow-y: auto;
+            padding: 20px;
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--border-gray);
+        }
+        
+        .mobile-menu-links {
+            list-style: none;
+        }
+        
+        .mobile-menu-link {
+            margin-bottom: 15px;
+        }
+        
+        .mobile-menu-link a {
+            text-decoration: none;
+            color: var(--dark-gray);
+            font-size: 16px;
+            font-weight: 500;
+            display: block;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-gray);
+        }
+        
+        .mobile-menu-link a.active {
+            color: var(--primary-blue);
+        }
+        
+        .mobile-menu-actions {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+    </style>
+</head>
+<body>
+    <!-- مؤشر التقدم الذكي -->
+    <div class="progress-indicator" id="progressIndicator"></div>
+    
+    <!-- زر العودة للأعلى -->
+    <button class="scroll-top" id="scrollTop" aria-label="العودة للأعلى">
+        <i class="fas fa-chevron-up"></i>
+    </button>
+    
+    <!-- شريط الإشعارات الذكي -->
+    <div class="smart-notification-bar" id="notificationBar">
+        <div class="notification-content">
+            <span id="notificationMessage">🎉 <strong>مرحباً بك!</strong> تم تسجيل دخولك بنجاح</span>
+            <button class="notification-close" onclick="closeNotification()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+    </div>
+    
+    <!-- النافبار العلوية -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <span class="logo-text">رياضي</span>
+                <span class="logo-tagline">رفع مستوى التدريب الرياضي. معًا.</span>
+            </a>
+            
+            <!-- الأشرطة الثلاثة للقائمة -->
+            <button class="hamburger-menu" id="hamburgerMenu" aria-label="فتح القائمة">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            
+            <ul class="nav-menu">
+                <li><a href="#" class="nav-link active">الرئيسية</a></li>
+                <li><a href="#sports" class="nav-link">الرياضات</a></li>
+                <li><a href="#coaches" class="nav-link">المدربون</a></li>
+                <li><a href="#content" class="nav-link">المحتوى المهني</a></li>
+                <li><a href="#jobs" class="nav-link">الوظائف</a></li>
+            </ul>
+            
+            <div class="nav-actions">
+                <button class="btn btn-secondary" onclick="showLogin()">تسجيل الدخول</button>
+                <button class="btn btn-primary" onclick="showRegister()">ابدأ رحلتك المهنية</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- قائمة الهاتف المحمول -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    <div class="mobile-menu" id="mobileMenu">
+        <div class="mobile-menu-header">
+            <span class="logo-text" style="font-size: 24px;">رياضي</span>
+            <button class="hamburger-menu active" id="closeMobileMenu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+        <ul class="mobile-menu-links">
+            <li class="mobile-menu-link"><a href="#" class="active">الرئيسية</a></li>
+            <li class="mobile-menu-link"><a href="#sports">الرياضات</a></li>
+            <li class="mobile-menu-link"><a href="#coaches">المدربون</a></li>
+            <li class="mobile-menu-link"><a href="#content">المحتوى المهني</a></li>
+            <li class="mobile-menu-link"><a href="#jobs">الوظائف</a></li>
+        </ul>
+        <div class="mobile-menu-actions">
+            <button class="btn btn-secondary" style="width: 100%;" onclick="showLogin()">تسجيل الدخول</button>
+            <button class="btn btn-primary" style="width: 100%;" onclick="showRegister()">ابدأ رحلتك المهنية</button>
+        </div>
+    </div>
+
+    <!-- الهيرو سكشن -->
+    <section class="hero lazy-load">
+        <div class="hero-content">
+            <h1>القيادة الرياضية تبدأ هنا</h1>
+            <p>انضم إلى مجتمع المدربين والرياضيين المحترفين الذين يرفعون معايير التدريب الرياضي عالميًا</p>
+            <button class="btn btn-primary hero-cta focus-ring" onclick="showRegister()">ابدأ رحلتك المهنية</button>
+            
+            <!-- مؤشرات الثقة - تم تعديل الترتيب للجوال -->
+            <div class="trust-indicators">
+                <div class="trust-item">
+                    <i class="fas fa-shield-alt trust-icon"></i>
+                    <span>منصة موثوقة</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-globe trust-icon"></i>
+                    <span>عالمية المضمون</span>
+                </div>
+                <div class="trust-item">
+                    <i class="fas fa-award trust-icon"></i>
+                    <span>احترافية مطلقة</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- أقسام الرياضات -->
+    <section id="sports" class="sports-section lazy-load">
+        <div class="section-title-container">
+            <h2 class="section-title">اختر مجال تخصصك</h2>
+            <p class="section-subtitle">اختر من بين أكثر من 40 تخصص رياضي لتطوير مهاراتك والانضمام إلى مجتمع المحترفين</p>
+        </div>
+        <div class="sports-grid">
+            <div class="sport-card focus-ring" onclick="selectSport('كرة القدم')" tabindex="0">
+                <div class="sport-icon">
+                    <i class="fas fa-futbol"></i>
+                </div>
+                <div class="sport-name">كرة القدم</div>
+            </div>
+            <div class="sport-card focus-ring" onclick="selectSport('كرة السلة')" tabindex="0">
+                <div class="sport-icon">
+                    <i class="fas fa-basketball-ball"></i>
+                </div>
+                <div class="sport-name">كرة السلة</div>
+            </div>
+            <div class="sport-card focus-ring" onclick="selectSport('السباحة')" tabindex="0">
+                <div class="sport-icon">
+                    <i class="fas fa-swimmer"></i>
+                </div>
+                <div class="sport-name">السباحة</div>
+            </div>
+            <div class="sport-card focus-ring" onclick="selectSport('ألعاب القوى')" tabindex="0">
+                <div class="sport-icon">
+                    <i class="fas fa-running"></i>
+                </div>
+                <div class="sport-name">ألعاب القوى</div>
+            </div>
+            <div class="sport-card focus-ring" onclick="selectSport('التنس')" tabindex="0">
+                <div class="sport-icon">
+                    <i class="fas fa-table-tennis"></i>
+                </div>
+                <div class="sport-name">التنس</div>
+            </div>
+            <div class="sport-card focus-ring" onclick="selectSport('الفنون القتالية')" tabindex="0">
+                <div class="sport-icon">
+                    <i class="fas fa-user-ninja"></i>
+                </div>
+                <div class="sport-name">الفنون القتالية</div>
+            </div>
+            <div class="sport-card focus-ring future-feature" onclick="selectSport('الرياضات الذهنية')" tabindex="0">
+                <div class="sport-icon">
+                    <i class="fas fa-chess"></i>
+                </div>
+                <div class="sport-name">الرياضات الذهنية</div>
+            </div>
+            <div class="sport-card focus-ring" onclick="selectSport('المزيد')" tabindex="0">
+                <div class="sport-icon">
+                    <i class="fas fa-ellipsis-h"></i>
+                </div>
+                <div class="sport-name">اكتشف المزيد</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم القيمة -->
+    <section class="value-section lazy-load">
+        <div class="section-title-container">
+            <h2 class="section-title">ماذا تقدم المنصة للمدربين؟</h2>
+            <p class="section-subtitle">منصة رياضية متكاملة تقدم لك جميع الأدوات والمزايا التي تحتاجها لتنمية مهاراتك وتطوير مسيرتك المهنية</p>
+        </div>
+        <div class="value-grid">
+            <div class="value-card focus-ring">
+                <div class="value-icon">
+                    <i class="fas fa-id-card"></i>
+                </div>
+                <h3 class="value-title">الملف المهني المتكامل</h3>
+                <p>عرض مهاراتك وخبراتك في ملف تفاعلي محترف يمثلك أمام المؤسسات والزملاء حول العالم</p>
+            </div>
+            <div class="value-card focus-ring">
+                <div class="value-icon">
+                    <i class="fas fa-network-wired"></i>
+                </div>
+                <h3 class="value-title">التواصل المهني العالمي</h3>
+                <p>تواصل مع نظرائك والمؤسسات في مجال تخصصك لتبادل الخبرات وخلق فرص التعاون الدولية</p>
+            </div>
+            <div class="value-card focus-ring">
+                <div class="value-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <h3 class="value-title">التطوير المستمر</h3>
+                <p>طور مهاراتك بمحتوى حصري من خبراء العالم في مختلف التخصصات الرياضية المتقدمة</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم المدربون -->
+    <section id="coaches" class="coaches-section lazy-load">
+        <div class="section-title-container">
+            <h2 class="section-title">المدربون المتميزون</h2>
+            <p class="section-subtitle">تعرف على أفضل المدربين المحترفين من مختلف التخصصات الرياضية وانضم إلى مجتمع النخبة</p>
+        </div>
+        <div class="filter-bar">
+            <button class="filter-btn active" onclick="filterCoaches('all')">جميع التخصصات</button>
+            <button class="filter-btn" onclick="filterCoaches('football')">كرة القدم</button>
+            <button class="filter-btn" onclick="filterCoaches('basketball')">كرة السلة</button>
+            <button class="filter-btn" onclick="filterCoaches('fitness')">اللياقة البدنية</button>
+        </div>
+        <div class="coaches-grid">
+            <div class="coach-card focus-ring" data-sport="football">
+                <div class="coach-header">
+                    <div class="coach-avatar">م</div>
+                    <div class="coach-info">
+                        <h3>محمد العلي</h3>
+                        <div class="coach-specialty">مدرب كرة قدم محترف</div>
+                        <div class="coach-location">
+                            <i class="fas fa-map-marker-alt"></i> الرياض، السعودية
+                        </div>
+                        <div class="verified-badge" style="margin-top: 6px;">
+                            <i class="fas fa-check-circle"></i> مدرب موثّق
+                        </div>
+                    </div>
+                </div>
+                <p>خبير في تدريب الناشئين، مع 12 عاماً من الخبرة مع أندية سعودية وأوروبية</p>
+                <div class="coach-stats">
+                    <div class="stat">
+                        <div class="stat-number">15+</div>
+                        <div class="stat-label">عام خبرة</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">500+</div>
+                        <div class="stat-label">لاعب درّبهم</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">4.9</div>
+                        <div class="stat-label rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-outline" style="width: 100%; margin-top: var(--space-md);" onclick="viewCoachProfile('محمد العلي')">عرض الملف الشخصي</button>
+            </div>
+            
+            <div class="coach-card focus-ring" data-sport="basketball">
+                <div class="coach-header">
+                    <div class="coach-avatar">س</div>
+                    <div class="coach-info">
+                        <h3>سارة خالد</h3>
+                        <div class="coach-specialty">أخصائية لياقة بدنية</div>
+                        <div class="coach-location">
+                            <i class="fas fa-map-marker-alt"></i> دبي، الإمارات
+                        </div>
+                        <div class="verified-badge" style="margin-top: 6px;">
+                            <i class="fas fa-check-circle"></i> مدربة موثّقة
+                        </div>
+                    </div>
+                </div>
+                <p>متخصصة في برامج اللياقة للرياضيين المحترفين، مع شهادات دولية في التغذية الرياضية</p>
+                <div class="coach-stats">
+                    <div class="stat">
+                        <div class="stat-number">8+</div>
+                        <div class="stat-label">عام خبرة</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">300+</div>
+                        <div class="stat-label">رياضي درّبتهم</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">4.8</div>
+                        <div class="stat-label rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star-half-alt"></i>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-outline" style="width: 100%; margin-top: var(--space-md);" onclick="viewCoachProfile('سارة خالد')">عرض الملف الشخصي</button>
+            </div>
+            
+            <div class="coach-card focus-ring" data-sport="fitness">
+                <div class="coach-header">
+                    <div class="coach-avatar">ع</div>
+                    <div class="coach-info">
+                        <h3>علي حسن</h3>
+                        <div class="coach-specialty">مدرب سباحة معتمد</div>
+                        <div class="coach-location">
+                            <i class="fas fa-map-marker-alt"></i> القاهرة، مصر
+                        </div>
+                        <div class="verified-badge" style="margin-top: 6px;">
+                            <i class="fas fa-check-circle"></i> مدرب موثّق
+                        </div>
+                    </div>
+                </div>
+                <p>مدرب الفريق الوطني للسباحة للناشئين، حاصل على شهادات دولية في الإنقاذ والتدريب</p>
+                <div class="coach-stats">
+                    <div class="stat">
+                        <div class="stat-number">10+</div>
+                        <div class="stat-label">عام خبرة</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">200+</div>
+                        <div class="stat-label">سبّاح درّبهم</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-number">5.0</div>
+                        <div class="stat-label rating">
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                            <i class="fas fa-star"></i>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-outline" style="width: 100%; margin-top: var(--space-md);" onclick="viewCoachProfile('علي حسن')">عرض الملف الشخصي</button>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: var(--space-xl);">
+            <button class="btn btn-primary" onclick="showAllCoaches()">استعرض جميع المدربين</button>
+        </div>
+    </section>
+
+    <!-- قسم المحتوى المهني -->
+    <section id="content" class="content-section lazy-load">
+        <div class="section-title-container">
+            <h2 class="section-title">المحتوى المهني المتخصص</h2>
+            <p class="section-subtitle">طور مهاراتك مع محتوى حصري من خبراء عالميين في مختلف التخصصات الرياضية</p>
+        </div>
+        <div class="filter-bar">
+            <button class="filter-btn active" onclick="filterContent('all')">جميع المحتويات</button>
+            <button class="filter-btn" onclick="filterContent('courses')">الدورات</button>
+            <button class="filter-btn" onclick="filterContent('articles')">المقالات</button>
+            <button class="filter-btn" onclick="filterContent('webinars')">الندوات</button>
+        </div>
+        <div class="content-grid">
+            <div class="content-card focus-ring" data-type="courses">
+                <div class="content-image">
+                    <div class="content-level">مستوى متقدم</div>
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="content-info">
+                    <span class="content-category">دورة تدريبية</span>
+                    <h3 class="content-title">التحليل الفني الحديث في كرة القدم</h3>
+                    <p>تعلم أحدث أساليب التحليل الفني والاستراتيجيات التكتيكية المستخدمة في البطولات العالمية</p>
+                    <div class="content-meta">
+                        <div class="content-duration">
+                            <i class="fas fa-clock"></i> ٨ ساعات
+                        </div>
+                        <div class="content-author">
+                            <i class="fas fa-user"></i> د. أحمد فتحي
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-outline" style="width: 100%; border-top-left-radius: 0; border-top-right-radius: 0;" onclick="viewContent('التحليل الفني الحديث في كرة القدم')">ابدأ التعلم</button>
+            </div>
+            
+            <div class="content-card focus-ring" data-type="articles">
+                <div class="content-image">
+                    <div class="content-level">مستوى متوسط</div>
+                    <i class="fas fa-newspaper"></i>
+                </div>
+                <div class="content-info">
+                    <span class="content-category">مقال متخصص</span>
+                    <h3 class="content-title">التغذية الرياضية للاعبين المحترفين</h3>
+                    <p>دليل شامل للأنظمة الغذائية المثلى لتعزيز الأداء الرياضي والتعافي السريع</p>
+                    <div class="content-meta">
+                        <div class="content-duration">
+                            <i class="fas fa-clock"></i> ١٥ دقيقة قراءة
+                        </div>
+                        <div class="content-author">
+                            <i class="fas fa-user"></i> د. سلمى محمود
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-outline" style="width: 100%; border-top-left-radius: 0; border-top-right-radius: 0;" onclick="viewContent('التغذية الرياضية للاعبين المحترفين')">اقرأ المقال</button>
+            </div>
+            
+            <div class="content-card focus-ring" data-type="webinars">
+                <div class="content-image">
+                    <div class="content-level">مستوى مبتدئ</div>
+                    <i class="fas fa-video"></i>
+                </div>
+                <div class="content-info">
+                    <span class="content-category">ندوة مباشرة</span>
+                    <h3 class="content-title">إدارة الفرق الرياضية في العصر الحديث</h3>
+                    <p>ندوة مباشرة مع خبراء في إدارة الفرق الرياضية والتحفيز النفسي للاعبين</p>
+                    <div class="content-meta">
+                        <div class="content-duration">
+                            <i class="fas fa-calendar"></i> ١٥ مارس
+                        </div>
+                        <div class="content-author">
+                            <i class="fas fa-users"></i> متحدثون متعددون
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-outline" style="width: 100%; border-top-left-radius: 0; border-top-right-radius: 0;" onclick="viewContent('إدارة الفرق الرياضية في العصر الحديث')">سجل الآن</button>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: var(--space-xl);">
+            <button class="btn btn-primary" onclick="showAllContent()">استكشف مكتبتنا الكاملة</button>
+        </div>
+    </section>
+
+    <!-- الوظائف الأخيرة -->
+    <section id="jobs" class="jobs-section lazy-load">
+        <div class="section-title-container">
+            <h2 class="section-title">أحدث الفرص المهنية</h2>
+            <p class="section-subtitle">اكتشف فرص العمل المميزة في مجال التدريب الرياضي من مختلف المؤسسات والجهات العالمية</p>
+        </div>
+        <div class="jobs-grid">
+            <div class="job-card focus-ring">
+                <h3 class="job-title">مدرب كرة قدم للناشئين</h3>
+                <div class="job-meta">
+                    <span class="job-meta-item">
+                        <i class="fas fa-map-marker-alt"></i> الرياض، السعودية
+                    </span>
+                    <span class="job-meta-item">
+                        <i class="fas fa-briefcase"></i> دوام كامل
+                    </span>
+                    <span class="job-meta-item">
+                        <i class="fas fa-clock"></i> منذ ٣ ساعات
+                    </span>
+                </div>
+                <p>مطلوب مدرب كرة قدم متخصص في تدريب الناشئين (فئة تحت 16 سنة) للانضمام إلى أكاديمية النخبة</p>
+                <button class="btn btn-primary" style="margin-top: var(--space-sm);" onclick="applyJob()">التقديم للوظيفة</button>
+            </div>
+            <div class="job-card focus-ring">
+                <h3 class="job-title">أخصائي لياقة بدنية</h3>
+                <div class="job-meta">
+                    <span class="job-meta-item">
+                        <i class="fas fa-map-marker-alt"></i> دبي، الإمارات
+                    </span>
+                    <span class="job-meta-item">
+                        <i class="fas fa-briefcase"></i> دوام جزئي
+                    </span>
+                    <span class="job-meta-item">
+                        <i class="fas fa-clock"></i> منذ يوم
+                    </span>
+                </div>
+                <p>مطلوب أخصائي لياقة بدنية للعمل مع فريق كرة سلة محترف، مع خبرة لا تقل عن 3 سنوات</p>
+                <button class="btn btn-primary" style="margin-top: var(--space-sm);" onclick="applyJob()">التقديم للوظيفة</button>
+            </div>
+            <div class="job-card focus-ring">
+                <h3 class="job-title">مدرب سباحة معتمد</h3>
+                <div class="job-meta">
+                    <span class="job-meta-item">
+                        <i class="fas fa-map-marker-alt"></i> القاهرة، مصر
+                    </span>
+                    <span class="job-meta-item">
+                        <i class="fas fa-briefcase"></i> عقد مؤقت
+                    </span>
+                    <span class="job-meta-item">
+                        <i class="fas fa-clock"></i> منذ يومين
+                    </span>
+                </div>
+                <p>مطلوب مدرب سباحة معتمد لتدريب الفريق الوطني للناشئين، مع شهادة دولية في الإنقاذ</p>
+                <button class="btn btn-primary" style="margin-top: var(--space-sm);" onclick="applyJob()">التقديم للوظيفة</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- دعوة الانضمام -->
+    <section class="cta-section lazy-load">
+        <div class="cta-container">
+            <h2 class="cta-title" style="color: var(--pure-white);">ابدأ بناء حضورك المهني اليوم</h2>
+            <p style="color: rgba(255, 255, 255, 0.9); margin-bottom: var(--space-xl); font-size: 1.1rem;">
+                انضم إلى آلاف المحترفين الذين اختاروا منصة رياضي لتطوير مسيرتهم الرياضية
+            </p>
+            <div class="cta-stats">
+                <div class="stat-item">
+                    <div class="stat-number" style="color: var(--pure-white);">5,247+</div>
+                    <div class="stat-label" style="color: var(--pure-white);">مدرب محترف</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" style="color: var(--pure-white);">892+</div>
+                    <div class="stat-label" style="color: var(--pure-white);">مؤسسة رياضية</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" style="color: var(--pure-white);">142+</div>
+                    <div class="stat-label" style="color: var(--pure-white);">تخصص رياضي</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number" style="color: var(--pure-white);">2,158+</div>
+                    <div class="stat-label" style="color: var(--pure-white);">فرصة مهنية</div>
+                </div>
+            </div>
+            <button class="btn btn-primary hero-cta focus-ring" onclick="showRegister()">
+                إنشاء حساب مهني
+            </button>
+            <div style="margin-top: var(--space-lg);">
+                <span class="ai-badge">
+                    <i class="fas fa-robot"></i>
+                    نظام توصية ذكي
+                </span>
+                <span style="opacity: 0.9; font-size: 0.9rem; color: var(--pure-white);">
+                    نوصيك بالمدربين والفرص المناسبة لك
+                </span>
+            </div>
+        </div>
+    </section>
+
+    <!-- الفوتر -->
+    <footer class="footer">
+        <div class="footer-grid">
+            <div class="footer-column">
+                <h3>رياضي</h3>
+                <p>منصة التواجد الرياضي العالمي للمدربين والمؤسسات الرياضية. نرفع معًا مستوى المهنة التدريبية.</p>
+                <div class="trust-badges">
+                    <div class="trust-badge">
+                        <i class="fas fa-check-circle"></i>
+                        <span>موثوقة</span>
+                    </div>
+                    <div class="trust-badge">
+                        <i class="fas fa-lock"></i>
+                        <span>آمنة</span>
+                    </div>
+                    <div class="trust-badge">
+                        <i class="fas fa-globe"></i>
+                        <span>عالمية</span>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>روابط سريعة</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><a href="#">الرئيسية</a></li>
+                    <li class="footer-link"><a href="#sports">الرياضات</a></li>
+                    <li class="footer-link"><a href="#coaches">المدربون</a></li>
+                    <li class="footer-link"><a href="#content">المحتوى المهني</a></li>
+                    <li class="footer-link"><a href="#jobs">الوظائف</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>الدعم والمعلومات</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><a href="#">الأسئلة الشائعة</a></li>
+                    <li class="footer-link"><a href="#">اتصل بنا</a></li>
+                    <li class="footer-link"><a href="#">سياسة الخصوصية</a></li>
+                    <li class="footer-link"><a href="#">شروط الاستخدام</a></li>
+                    <li class="footer-link"><a href="#">للمؤسسات</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>تابعنا</h3>
+                <ul class="footer-links">
+                    <li class="footer-link"><a href="#"><i class="fab fa-twitter"></i> تويتر</a></li>
+                    <li class="footer-link"><a href="#"><i class="fab fa-linkedin"></i> لينكدإن</a></li>
+                    <li class="footer-link"><a href="#"><i class="fab fa-instagram"></i> إنستغرام</a></li>
+                    <li class="footer-link"><a href="#"><i class="fab fa-youtube"></i> يوتيوب</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="copyright">
+            © 2023 رياضي. جميع الحقوق محفوظة. تم تصميم المنصة لخدمة المجتمع الرياضي العالمي.
+            <div style="margin-top: var(--space-sm); font-size: 12px;">
+                معتمد من قبل خبراء في ٤٢ دولة حول العالم
+            </div>
+        </div>
+    </footer>
+
+    <!-- شريط التنقل السفلي للجوال -->
+    <nav class="mobile-bottom-nav">
+        <div class="mobile-nav-grid">
+            <a href="#" class="mobile-nav-item active">
+                <div class="mobile-nav-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <span>الرئيسية</span>
+            </a>
+            <a href="#coaches" class="mobile-nav-item">
+                <div class="mobile-nav-icon">
+                    <i class="fas fa-users"></i>
+                </div>
+                <span>المدربون</span>
+            </a>
+            <a href="#content" class="mobile-nav-item">
+                <div class="mobile-nav-icon">
+                    <i class="fas fa-book"></i>
+                </div>
+                <span>المحتوى</span>
+            </a>
+            <a href="#jobs" class="mobile-nav-item">
+                <div class="mobile-nav-icon">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <span>الوظائف</span>
+            </a>
+        </div>
+    </nav>
+
+    <!-- شريط النشاط الحي -->
+    <div class="live-activity" id="liveActivity">
+        <div class="activity-header">
+            <span style="font-weight: 600;">نشاط حديث</span>
+            <button onclick="closeActivity()" style="background: none; border: none; color: var(--dark-gray); cursor: pointer;">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div id="activityContent">
+            <!-- سيتم ملؤها بالجافاسكريبت -->
+        </div>
+    </div>
+
+    <!-- نموذج تسجيل الدخول -->
+    <div id="loginModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 2000; overflow-y: auto;">
+        <div style="position: absolute; top: 50%; right: 50%; transform: translate(50%, -50%); background: white; border-radius: 20px; padding: var(--space-xl); width: 90%; max-width: 400px;">
+            <button onclick="hideLoginModal()" style="position: absolute; top: 20px; left: 20px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--dark-gray);">&times;</button>
+            <h3 style="margin-bottom: var(--space-lg); text-align: center;">تسجيل الدخول</h3>
+            <input type="email" id="loginEmail" placeholder="البريد الإلكتروني" class="form-input" style="margin-bottom: var(--space-md);">
+            <input type="password" id="loginPassword" placeholder="كلمة المرور" class="form-input" style="margin-bottom: var(--space-lg);">
+            <button class="btn btn-primary" style="width: 100%;" onclick="login()">تسجيل الدخول</button>
+            <p style="text-align: center; margin-top: var(--space-md); font-size: 0.9rem; color: #6B7280;">
+                ليس لديك حساب؟ <a href="javascript:void(0);" onclick="showRegister()" style="color: var(--primary-blue); text-decoration: none; font-weight: 500;">سجل الآن</a>
+            </p>
+        </div>
+    </div>
+
+    <!-- نموذج إنشاء حساب جديد -->
+    <div id="registerModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 2000; overflow-y: auto;">
+        <div style="position: absolute; top: 50%; right: 50%; transform: translate(50%, -50%); background: white; border-radius: 20px; padding: var(--space-xl); width: 90%; max-width: 600px; max-height: 90vh; overflow-y: auto;">
+            <button onclick="hideRegisterModal()" style="position: absolute; top: 20px; left: 20px; background: none; border: none; font-size: 1.5rem; cursor: pointer; color: var(--dark-gray);">&times;</button>
+            <h3 style="margin-bottom: var(--space-lg); text-align: center;">إنشاء حساب جديد</h3>
+            <p style="text-align: center; margin-bottom: var(--space-lg); color: #6B7280;">املأ البيانات التالية لإنشاء حسابك المهني</p>
+            
+            <form id="registerForm">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="fullName" class="form-label">الاسم الكامل <span class="required">*</span></label>
+                        <input type="text" id="fullName" class="form-input" placeholder="أدخل اسمك الكامل" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">البريد الإلكتروني <span class="required">*</span></label>
+                        <input type="email" id="email" class="form-input" placeholder="example@example.com" required>
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="password" class="form-label">كلمة المرور <span class="required">*</span></label>
+                        <input type="password" id="password" class="form-input" placeholder="كلمة المرور (6 أحرف على الأقل)" minlength="6" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="confirmPassword" class="form-label">تأكيد كلمة المرور <span class="required">*</span></label>
+                        <input type="password" id="confirmPassword" class="form-input" placeholder="أعد إدخال كلمة المرور" minlength="6" required>
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="userType" class="form-label">نوع المستخدم <span class="required">*</span></label>
+                        <select id="userType" class="form-select" required>
+                            <option value="">اختر نوع المستخدم</option>
+                            <option value="coach">مدرب</option>
+                            <option value="athlete">رياضي</option>
+                            <option value="institution">مؤسسة رياضية</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="sportType" class="form-label">التخصص الرياضي <span class="required">*</span></label>
+                        <select id="sportType" class="form-select" required>
+                            <option value="">اختر التخصص الرياضي</option>
+                            <option value="football">كرة القدم</option>
+                            <option value="basketball">كرة السلة</option>
+                            <option value="swimming">السباحة</option>
+                            <option value="athletics">ألعاب القوى</option>
+                            <option value="tennis">التنس</option>
+                            <option value="martial_arts">الفنون القتالية</option>
+                            <option value="other">رياضة أخرى</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label for="country" class="form-label">الدولة <span class="required">*</span></label>
+                        <select id="country" class="form-select" required>
+                            <option value="">اختر الدولة</option>
+                            <option value="sa">السعودية</option>
+                            <option value="ae">الإمارات العربية المتحدة</option>
+                            <option value="eg">مصر</option>
+                            <option value="qa">قطر</option>
+                            <option value="kw">الكويت</option>
+                            <option value="bh">البحرين</option>
+                            <option value="om">عمان</option>
+                            <option value="jo">الأردن</option>
+                            <option value="lb">لبنان</option>
+                            <option value="other">دولة أخرى</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="city" class="form-label">المدينة <span class="required">*</span></label>
+                        <input type="text" id="city" class="form-input" placeholder="المدينة" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone" class="form-label">رقم الهاتف (اختياري)</label>
+                    <input type="tel" id="phone" class="form-input" placeholder="+966 5X XXX XXXX">
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="terms" name="terms" required>
+                    <label for="terms" style="font-size: 0.9rem;">
+                        أوافق على <a href="#" style="color: var(--primary-blue); text-decoration: none;">شروط الخدمة</a> و <a href="#" style="color: var(--primary-blue); text-decoration: none;">سياسة الخصوصية</a> لمنصة رياضي
+                    </label>
+                </div>
+                
+                <div class="checkbox-group">
+                    <input type="checkbox" id="newsletter" name="newsletter">
+                    <label for="newsletter" style="font-size: 0.9rem;">
+                        أرغب في تلقي النشرات الإخبارية والعروض الخاصة من رياضي
+                    </label>
+                </div>
+                
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: var(--space-md);">
+                    إنشاء الحساب
+                </button>
+                
+                <p style="text-align: center; margin-top: var(--space-md); font-size: 0.8rem; color: #6B7280;">
+                    بياناتك ستستخدم لتحسين تجربتك على المنصة وتقديم محتوى مخصص لك
+                </p>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // === حالة التطبيق ===
+        let currentUserType = 'coach';
+        let activityInterval;
+        let notificationTimeout;
+        
+        // === تهيئة الصفحة ===
+        document.addEventListener('DOMContentLoaded', function() {
+            initPage();
+            setupObservers();
+            setupScrollEffects();
+            startActivitySimulation();
+            setupMobileOptimizations();
+            
+            // تحميل العناصر الكسولة
+            setTimeout(() => {
+                document.querySelectorAll('.lazy-load').forEach(el => {
+                    el.classList.add('loaded');
+                });
+            }, 100);
+            
+            // إعداد نموذج التسجيل
+            document.getElementById('registerForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                registerNewAccount();
+            });
+            
+            // إعداد فلاتر المدربين والمحتوى
+            setupFilters();
+            
+            // إعداد أحداث الجوال
+            setupMobileEvents();
+            
+            // إعداد قائمة الهاتف المحمول
+            setupMobileMenu();
+        });
+        
+        function initPage() {
+            // إعداد مؤشر التقدم
+            window.addEventListener('scroll', updateProgressIndicator);
+            
+            // إعداد زر العودة للأعلى
+            window.addEventListener('scroll', toggleScrollTopButton);
+            document.getElementById('scrollTop').addEventListener('click', scrollToTop);
+            
+            // إعداد التنقل السلس
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', smoothScroll);
+            });
+            
+            // إعداد تأثيرات التركيز
+            document.querySelectorAll('.focus-ring').forEach(el => {
+                el.addEventListener('mousedown', () => el.style.transform = 'scale(0.98)');
+                el.addEventListener('mouseup', () => el.style.transform = '');
+                el.addEventListener('mouseleave', () => el.style.transform = '');
+            });
+            
+            // إعداد التمرير السلس للهاتف
+            if ('scrollBehavior' in document.documentElement.style) {
+                document.documentElement.style.scrollBehavior = 'smooth';
+            }
+        }
+        
+        function setupMobileMenu() {
+            const hamburgerMenu = document.getElementById('hamburgerMenu');
+            const closeMobileMenu = document.getElementById('closeMobileMenu');
+            const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+            const mobileMenu = document.getElementById('mobileMenu');
+            
+            hamburgerMenu.addEventListener('click', function() {
+                this.classList.add('active');
+                mobileMenuOverlay.style.display = 'block';
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+            
+            closeMobileMenu.addEventListener('click', function() {
+                hamburgerMenu.classList.remove('active');
+                mobileMenuOverlay.style.display = 'none';
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+            
+            mobileMenuOverlay.addEventListener('click', function() {
+                hamburgerMenu.classList.remove('active');
+                mobileMenuOverlay.style.display = 'none';
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+            
+            // إغلاق القائمة عند النقر على رابط
+            document.querySelectorAll('.mobile-menu-link a').forEach(link => {
+                link.addEventListener('click', function() {
+                    hamburgerMenu.classList.remove('active');
+                    mobileMenuOverlay.style.display = 'none';
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    
+                    // تحديث الروابط النشطة
+                    document.querySelectorAll('.mobile-menu-link a').forEach(a => {
+                        a.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                });
+            });
+        }
+        
+        function setupMobileOptimizations() {
+            // تحسينات خاصة بالجوال
+            if (window.innerWidth <= 768) {
+                // تحسين الضغط على الأزرار للجوال
+                document.querySelectorAll('.btn, .sport-card, .coach-card, .content-card, .job-card').forEach(element => {
+                    element.addEventListener('touchstart', function() {
+                        this.style.transform = 'scale(0.97)';
+                        this.style.opacity = '0.9';
+                    });
+                    
+                    element.addEventListener('touchend', function() {
+                        this.style.transform = '';
+                        this.style.opacity = '';
+                    });
+                    
+                    element.addEventListener('touchcancel', function() {
+                        this.style.transform = '';
+                        this.style.opacity = '';
+                    });
+                });
+                
+                // إعداد حجم الخط المناسب لحقول الإدخال على iOS
+                document.querySelectorAll('input, select, textarea').forEach(input => {
+                    input.addEventListener('focus', function() {
+                        this.style.fontSize = '16px';
+                    });
+                });
+                
+                // تحسين أداء التمرير على iOS
+                document.body.style.webkitOverflowScrolling = 'touch';
+            }
+        }
+        
+        function setupMobileEvents() {
+            // إغلاق النوافذ عند التمرير على الجوال
+            let touchStartY;
+            document.addEventListener('touchstart', e => {
+                touchStartY = e.touches[0].clientY;
+            });
+            
+            document.addEventListener('touchend', e => {
+                const touchEndY = e.changedTouches[0].clientY;
+                const scrollDirection = touchEndY < touchStartY ? 'up' : 'down';
+                
+                // إغلاق النوافذ المفتوحة عند التمرير للأسفل
+                if (scrollDirection === 'down' && window.scrollY < 50) {
+                    if (document.getElementById('loginModal').style.display === 'block') {
+                        hideLoginModal();
+                    }
+                    if (document.getElementById('registerModal').style.display === 'block') {
+                        hideRegisterModal();
+                    }
+                }
+            });
+            
+            // منع التكبير في حقول الإدخال على الجوال
+            document.addEventListener('touchstart', function(event) {
+                if (event.target.tagName === 'INPUT' || event.target.tagName === 'TEXTAREA' || event.target.tagName === 'SELECT') {
+                    event.target.style.fontSize = '16px';
+                }
+            });
+        }
+        
+        // === وظائف الإشعارات ===
+        
+        function showLoginNotification(name) {
+            const notificationBar = document.getElementById('notificationBar');
+            const notificationMessage = document.getElementById('notificationMessage');
+            
+            notificationMessage.innerHTML = `🎉 <strong>مرحباً ${name}!</strong> تم تسجيل دخولك بنجاح`;
+            notificationBar.style.display = 'block';
+            
+            setTimeout(() => {
+                notificationBar.style.transform = 'translateY(0)';
+            }, 100);
+            
+            // إخفاء تلقائي بعد 6 ثوان
+            clearTimeout(notificationTimeout);
+            notificationTimeout = setTimeout(closeNotification, 6000);
+        }
+        
+        function showRegisterNotification(name, userType) {
+            const userTypeText = userType === 'coach' ? 'مدرب' : 
+                                userType === 'athlete' ? 'رياضي' : 
+                                'مؤسسة رياضية';
+            
+            const notificationBar = document.getElementById('notificationBar');
+            const notificationMessage = document.getElementById('notificationMessage');
+            
+            notificationMessage.innerHTML = 
+                `🎉 <strong>مرحباً بك ${name}!</strong> تم إنشاء حسابك كـ${userTypeText} بنجاح`;
+            notificationBar.style.display = 'block';
+            
+            setTimeout(() => {
+                notificationBar.style.transform = 'translateY(0)';
+            }, 100);
+            
+            clearTimeout(notificationTimeout);
+            notificationTimeout = setTimeout(closeNotification, 8000);
+        }
+        
+        function closeNotification() {
+            const notificationBar = document.getElementById('notificationBar');
+            notificationBar.style.transform = 'translateY(100%)';
+            
+            setTimeout(() => {
+                notificationBar.style.display = 'none';
+            }, 500);
+            
+            clearTimeout(notificationTimeout);
+        }
+        
+        // === وظيفة تسجيل الدخول ===
+        function login() {
+            const email = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            
+            if (!email || !password) {
+                showMessage('يرجى ملء جميع الحقول المطلوبة', 'error');
+                return;
+            }
+            
+            showMessage('جارٍ تسجيل الدخول...', 'info');
+            hideLoginModal();
+            
+            // محاكاة تسجيل الدخول الناجح
+            setTimeout(() => {
+                // إظهار إشعار تسجيل الدخول
+                const name = email.split('@')[0]; // أخذ الجزء الأول من البريد كاسم
+                showLoginNotification(name);
+                showMessage('تم تسجيل الدخول بنجاح!', 'success');
+            }, 1500);
+        }
+        
+        // === وظيفة إنشاء حساب جديد ===
+        function registerNewAccount() {
+            const form = document.getElementById('registerForm');
+            
+            // التحقق من صحة البيانات
+            const fullName = document.getElementById('fullName').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+            const userType = document.getElementById('userType').value;
+            const sportType = document.getElementById('sportType').value;
+            const country = document.getElementById('country').value;
+            const city = document.getElementById('city').value;
+            const phone = document.getElementById('phone').value;
+            const terms = document.getElementById('terms').checked;
+            
+            // التحقق من صحة البيانات الأساسية
+            if (!fullName || !email || !password || !confirmPassword || !userType || !sportType || !country || !city) {
+                showMessage('يرجى ملء جميع الحقول المطلوبة', 'error');
+                return;
+            }
+            
+            if (!terms) {
+                showMessage('يجب الموافقة على الشروط والأحكام', 'error');
+                return;
+            }
+            
+            if (password !== confirmPassword) {
+                showMessage('كلمتا المرور غير متطابقتين', 'error');
+                return;
+            }
+            
+            if (password.length < 6) {
+                showMessage('كلمة المرور يجب أن تكون 6 أحرف على الأقل', 'error');
+                return;
+            }
+            
+            // عرض رسالة التحميل
+            showMessage('جارٍ إنشاء حسابك...', 'info');
+            hideRegisterModal();
+            
+            // محاكاة إنشاء الحساب
+            setTimeout(() => {
+                showMessage(`تم إنشاء حسابك بنجاح! مرحباً بك ${fullName}`, 'success');
+                
+                // إظهار إشعار إنشاء الحساب
+                showRegisterNotification(fullName, userType);
+            }, 2000);
+        }
+        
+        // === وظيفة الرسائل العادية ===
+        function showMessage(message, type) {
+            // إنشاء عنصر الرسالة
+            const messageEl = document.createElement('div');
+            messageEl.textContent = message;
+            messageEl.style.cssText = `
+                position: fixed;
+                top: 100px;
+                right: 50%;
+                transform: translateX(50%);
+                background: ${type === 'success' ? '#10B981' : type === 'error' ? '#EF4444' : '#1A56DB'};
+                color: white;
+                padding: 12px 24px;
+                border-radius: 12px;
+                z-index: 2001;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                animation: slideInDown 0.3s ease, fadeOut 0.3s ease 2.7s;
+                font-weight: 500;
+                max-width: 90%;
+                text-align: center;
+                font-size: 14px;
+            `;
+            
+            document.body.appendChild(messageEl);
+            
+            setTimeout(() => {
+                messageEl.remove();
+            }, 3000);
+        }
+        
+        // === وظائف أخرى ===
+        
+        function setupObservers() {
+            // مراقبة العناصر للتحميل الكسول
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('loaded');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            document.querySelectorAll('.lazy-load').forEach(el => observer.observe(el));
+        }
+        
+        function setupScrollEffects() {
+            // تأثيرات التمرير
+            let lastScrollTop = 0;
+            window.addEventListener('scroll', () => {
+                const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                const navbar = document.querySelector('.navbar');
+                
+                if (scrollTop > lastScrollTop && scrollTop > 100) {
+                    navbar.style.transform = 'translateY(-100%)';
+                } else {
+                    navbar.style.transform = 'translateY(0)';
+                }
+                
+                lastScrollTop = scrollTop;
+            });
+        }
+        
+        function setupFilters() {
+            // إعداد أحداث الفلاتر
+            document.querySelectorAll('.filter-bar').forEach(bar => {
+                const buttons = bar.querySelectorAll('.filter-btn');
+                buttons.forEach(btn => {
+                    btn.addEventListener('click', function() {
+                        buttons.forEach(b => b.classList.remove('active'));
+                        this.classList.add('active');
+                    });
+                });
+            });
+        }
+        
+        function updateProgressIndicator() {
+            const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+            const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            const scrolled = (winScroll / height) * 100;
+            document.getElementById('progressIndicator').style.width = scrolled + "%";
+        }
+        
+        function toggleScrollTopButton() {
+            const scrollTopBtn = document.getElementById('scrollTop');
+            if (window.pageYOffset > 300) {
+                scrollTopBtn.style.display = 'flex';
+            } else {
+                scrollTopBtn.style.display = 'none';
+            }
+        }
+        
+        function scrollToTop() {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+        
+        function smoothScroll(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (targetId === '#') return;
+            
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+                
+                // إغلاق القائمة المتنقلة على الجوال
+                if (window.innerWidth <= 768) {
+                    document.querySelectorAll('.mobile-nav-item').forEach(item => {
+                        item.classList.remove('active');
+                    });
+                    this.classList.add('active');
+                }
+            }
+        }
+        
+        function selectSport(sportName) {
+            // تأثير الضغط
+            const card = event.currentTarget;
+            card.style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                card.style.transform = '';
+            }, 150);
+            
+            // رسالة ذكية
+            showMessage(`جارٍ تحميل محتوى ${sportName}...`, 'info');
+            
+            // محاكاة التحميل
+            setTimeout(() => {
+                showMessage(`تم فتح قسم ${sportName} بنجاح`, 'success');
+            }, 800);
+        }
+        
+        function applyJob() {
+            const button = event.currentTarget;
+            const originalText = button.textContent;
+            
+            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التقديم...';
+            button.disabled = true;
+            
+            setTimeout(() => {
+                button.innerHTML = '<i class="fas fa-check"></i> تم التقديم بنجاح';
+                button.style.backgroundColor = '#10B981';
+                
+                setTimeout(() => {
+                    button.textContent = originalText;
+                    button.style.backgroundColor = '';
+                    button.disabled = false;
+                }, 2000);
+            }, 1500);
+        }
+        
+        function filterCoaches(filter) {
+            const coachCards = document.querySelectorAll('.coach-card');
+            coachCards.forEach(card => {
+                if (filter === 'all' || card.getAttribute('data-sport') === filter) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            showMessage(`تم تصفية المدربين حسب ${getFilterText(filter)}`, 'info');
+        }
+        
+        function getFilterText(filter) {
+            const filters = {
+                'all': 'جميع التخصصات',
+                'football': 'كرة القدم',
+                'basketball': 'كرة السلة',
+                'fitness': 'اللياقة البدنية'
+            };
+            return filters[filter] || filter;
+        }
+        
+        function viewCoachProfile(coachName) {
+            showMessage(`جارٍ تحميل ملف ${coachName}...`, 'info');
+            
+            setTimeout(() => {
+                showMessage(`تم فتح ملف ${coachName} بنجاح`, 'success');
+            }, 1000);
+        }
+        
+        function showAllCoaches() {
+            window.scrollTo({
+                top: document.getElementById('coaches').offsetTop - 80,
+                behavior: 'smooth'
+            });
+            
+            setTimeout(() => {
+                showMessage('جارٍ تحميل جميع المدربين...', 'info');
+            }, 500);
+        }
+        
+        function filterContent(filter) {
+            const contentCards = document.querySelectorAll('.content-card');
+            contentCards.forEach(card => {
+                if (filter === 'all' || card.getAttribute('data-type') === filter) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            showMessage(`تم تصفية المحتوى حسب ${getContentFilterText(filter)}`, 'info');
+        }
+        
+        function getContentFilterText(filter) {
+            const filters = {
+                'all': 'جميع المحتويات',
+                'courses': 'الدورات التدريبية',
+                'articles': 'المقالات',
+                'webinars': 'الندوات'
+            };
+            return filters[filter] || filter;
+        }
+        
+        function viewContent(contentName) {
+            showMessage(`جارٍ فتح ${contentName}...`, 'info');
+            
+            setTimeout(() => {
+                showMessage(`تم فتح ${contentName} بنجاح`, 'success');
+            }, 1000);
+        }
+        
+        function showAllContent() {
+            window.scrollTo({
+                top: document.getElementById('content').offsetTop - 80,
+                behavior: 'smooth'
+            });
+            
+            setTimeout(() => {
+                showMessage('جارٍ تحميل جميع المحتويات...', 'info');
+            }, 500);
+        }
+        
+        function showRegister() {
+            hideLoginModal();
+            document.getElementById('registerModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function hideRegisterModal() {
+            document.getElementById('registerModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        function showLogin() {
+            hideRegisterModal();
+            document.getElementById('loginModal').style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function hideLoginModal() {
+            document.getElementById('loginModal').style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        // === محاكاة النشاط الحي ===
+        function startActivitySimulation() {
+            const activities = [
+                { name: 'أحمد', action: 'انضم كمدرب كرة قدم', icon: 'futbol' },
+                { name: 'سارة', action: 'قدمت على وظيفة مدرب سباحة', icon: 'swimmer' },
+                { name: 'محمد', action: 'نشر مقالاً جديداً', icon: 'newspaper' },
+                { name: 'نادية', action: 'حصلت على توصية جديدة', icon: 'award' },
+                { name: 'خالد', action: 'انضم لأكاديمية النخبة', icon: 'landmark' }
+            ];
+            
+            let index = 0;
+            
+            activityInterval = setInterval(() => {
+                const activity = activities[index % activities.length];
+                updateActivityFeed(activity);
+                index++;
+                
+                // إظهار شريط النشاط تلقائياً على الجوال
+                if (window.innerWidth <= 768 && index === 1) {
+                    setTimeout(() => {
+                        document.getElementById('liveActivity').style.display = 'block';
+                    }, 2000);
+                }
+            }, 8000);
+        }
+        
+        function updateActivityFeed(activity) {
+            const activityContent = document.getElementById('activityContent');
+            const activityItem = document.createElement('div');
+            activityItem.className = 'activity-item';
+            activityItem.innerHTML = `
+                <div class="activity-avatar">
+                    ${activity.name.charAt(0)}
+                </div>
+                <div>
+                    <div style="font-weight: 500;">${activity.name}</div>
+                    <div style="font-size: 12px; color: #6B7280;">${activity.action}</div>
+                </div>
+            `;
+            
+            activityContent.insertBefore(activityItem, activityContent.firstChild);
+            
+            if (activityContent.children.length > 3) {
+                activityContent.removeChild(activityContent.lastChild);
+            }
+        }
+        
+        function closeActivity() {
+            document.getElementById('liveActivity').style.display = 'none';
+        }
+        
+        // === تحسينات إضافية ===
+        
+        // تحسين تجربة لوحة المفاتيح
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                hideRegisterModal();
+                hideLoginModal();
+                closeNotification();
+                closeActivity();
+                
+                // إغلاق قائمة الجوال
+                const hamburgerMenu = document.getElementById('hamburgerMenu');
+                const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+                const mobileMenu = document.getElementById('mobileMenu');
+                
+                if (mobileMenu.classList.contains('active')) {
+                    hamburgerMenu.classList.remove('active');
+                    mobileMenuOverlay.style.display = 'none';
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+            
+            // التنقل بالأزرار
+            if (e.key === 'Tab') {
+                document.querySelectorAll('.focus-ring').forEach(el => {
+                    el.classList.remove('keyboard-focused');
+                });
+                
+                if (document.activeElement.classList.contains('focus-ring')) {
+                    document.activeElement.classList.add('keyboard-focused');
+                }
+            }
+        });
+        
+        // تحسينات اللمس للجوال
+        document.addEventListener('touchmove', (e) => {
+            // منع التمرير الزائد في الأعلى
+            if (window.scrollY === 0 && e.touches[0].clientY > e.touches[0].screenY) {
+                e.preventDefault();
+            }
+        }, { passive: false });
+        
+        // CSS للتركيز بلوحة المفاتيح
+        const style = document.createElement('style');
+        style.textContent = `
+            .keyboard-focused {
+                outline: 3px solid var(--primary-blue);
+                outline-offset: 2px;
+            }
+            
+            @keyframes slideInDown {
+                from { transform: translate(50%, -20px); opacity: 0; }
+                to { transform: translate(50%, 0); opacity: 1; }
+            }
+            
+            @keyframes fadeOut {
+                from { opacity: 1; }
+                to { opacity: 0; }
+            }
+            
+            /* تحسينات الجوال */
+            @media (max-width: 768px) {
+                .mobile-nav-item.active {
+                    background: rgba(26, 86, 219, 0.1);
+                    color: var(--primary-blue);
+                }
+                
+                .mobile-nav-item:active {
+                    background: rgba(26, 86, 219, 0.2);
+                }
+                
+                .mobile-menu-link a.active {
+                    color: var(--primary-blue);
+                    font-weight: 600;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+        
+        // إعداد حجم النافذة عند التحميل
+        window.addEventListener('load', function() {
+            // إعادة حساب الأبعاد بعد تحميل الصفحة
+            setTimeout(() => {
+                if (window.innerWidth <= 768) {
+                    document.querySelectorAll('.sport-card').forEach(card => {
+                        card.style.minHeight = '140px';
+                    });
+                }
+            }, 500);
+        });
+        
+        // تحديث عند تغيير حجم النافذة
+        window.addEventListener('resize', function() {
+            if (window.innerWidth <= 768) {
+                setupMobileOptimizations();
+                setupMobileEvents();
+            } else {
+                // إغلاق قائمة الجوال عند توسيع الشاشة
+                const hamburgerMenu = document.getElementById('hamburgerMenu');
+                const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+                const mobileMenu = document.getElementById('mobileMenu');
+                
+                if (mobileMenu.classList.contains('active')) {
+                    hamburgerMenu.classList.remove('active');
+                    mobileMenuOverlay.style.display = 'none';
+                    mobileMenu.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            }
+        });
+    </script>
+</body>
+</html>
