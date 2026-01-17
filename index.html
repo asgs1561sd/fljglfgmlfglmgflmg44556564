@@ -406,12 +406,12 @@
             100% { transform: rotate(360deg); }
         }
         
-        /* === الهيرو المحسّن === */
+        /* === الهيرو المحسّن - تم تحسينه للهاتف === */
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.9)), url('https://images.unsplash.com/photo-1461896836934-ffe607ba8211?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
-            background-attachment: fixed;
+            background-attachment: scroll; /* تغيير من fixed إلى scroll للهاتف */
             color: var(--pure-white);
             padding: var(--space-xxl) var(--space-xl);
             text-align: center;
@@ -439,6 +439,7 @@
             margin: 0 auto;
             position: relative;
             z-index: 2;
+            padding: 0 15px;
         }
         
         .hero h1 {
@@ -457,6 +458,7 @@
             margin-bottom: var(--space-xl);
             opacity: 0.9;
             animation: fadeInUp 0.8s ease-out 0.2s both;
+            line-height: 1.6;
         }
         
         .hero-cta {
@@ -465,7 +467,7 @@
             animation: fadeInUp 0.8s ease-out 0.4s both;
         }
         
-        /* === مؤشرات الثقة === */
+        /* === مؤشرات الثقة - تم تحسينها للهاتف === */
         .trust-indicators {
             display: flex;
             justify-content: center;
@@ -483,11 +485,19 @@
             padding: var(--space-sm) var(--space-md);
             border-radius: 12px;
             backdrop-filter: blur(10px);
+            min-width: 160px;
+            justify-content: center;
         }
         
         .trust-icon {
             color: var(--success-green);
             font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+        
+        .trust-item span {
+            font-size: 1rem;
+            font-weight: 500;
         }
         
         /* === أقسام الرياضات المحسنة === */
@@ -1458,7 +1468,7 @@
                 margin-left: 0;
             }
             
-            /* تحسين الهيرو للجوال */
+            /* === تحسين الهيرو للجوال === */
             .hero {
                 margin-top: 60px;
                 min-height: 70vh !important;
@@ -1477,6 +1487,8 @@
                 font-size: 1.1rem !important;
                 padding: 0 10px;
                 margin-bottom: 30px !important;
+                line-height: 1.7 !important;
+                opacity: 0.95;
             }
             
             .hero-cta {
@@ -1485,6 +1497,7 @@
                 width: 90%;
                 max-width: 300px;
                 margin: 0 auto;
+                display: block;
             }
             
             /* === تحسين مؤشرات الثقة للهاتف === */
@@ -1495,12 +1508,8 @@
                 margin-top: 30px !important;
                 width: 100%;
                 justify-content: center;
-                flex-wrap: nowrap;
-                overflow-x: auto;
-                padding-bottom: 10px;
-                -webkit-overflow-scrolling: touch;
-                justify-content: flex-start;
-                padding: 0 15px;
+                flex-wrap: wrap;
+                padding: 0 10px;
                 margin-left: auto;
                 margin-right: auto;
             }
@@ -1516,12 +1525,21 @@
                 font-size: 13px;
                 flex-shrink: 0;
                 white-space: nowrap;
-                min-width: 120px;
+                min-width: 140px;
+                margin: 5px;
+                backdrop-filter: blur(5px);
+                background: rgba(255, 255, 255, 0.15);
+                border: 1px solid rgba(255, 255, 255, 0.2);
             }
             
             .trust-icon {
                 font-size: 1.2rem !important;
                 margin-left: 6px;
+            }
+            
+            .trust-item span {
+                font-size: 13px;
+                font-weight: 500;
             }
             
             /* ترتيب العناصر في الهاتف: منصة موثوقة أولاً، ثم عالمية المضمون، ثم احترافية مطلقة */
@@ -1847,27 +1865,44 @@
             /* === تحسينات للشاشات الصغيرة جداً === */
             .hero h1 {
                 font-size: 1.8rem !important;
+                line-height: 1.3 !important;
+                margin-bottom: 15px !important;
             }
             
             .hero p {
                 font-size: 1rem !important;
+                line-height: 1.7 !important;
+                margin-bottom: 25px !important;
             }
             
             /* تحسين مؤشرات الثقة للشاشات الصغيرة جداً */
             .trust-indicators {
                 gap: 6px !important;
                 padding: 0 10px;
+                margin-top: 25px !important;
             }
             
             .trust-item {
                 padding: 8px 10px !important;
                 font-size: 12px !important;
-                min-width: 110px;
+                min-width: 120px;
+                margin: 3px;
             }
             
             .trust-icon {
                 font-size: 1.1rem !important;
                 margin-left: 4px;
+            }
+            
+            .trust-item span {
+                font-size: 12px;
+            }
+            
+            .hero-cta {
+                padding: 14px 20px !important;
+                font-size: 1rem !important;
+                width: 100%;
+                max-width: 100%;
             }
             
             .sports-grid {
@@ -1902,12 +1937,6 @@
             
             .cta-stats {
                 grid-template-columns: 1fr !important;
-            }
-            
-            .hero-cta {
-                width: 100%;
-                max-width: 100%;
-                padding: 14px 20px !important;
             }
             
             .btn {
@@ -1954,7 +1983,7 @@
         @media (max-width: 360px) {
             /* تحسين مؤشرات الثقة للشاشات الصغيرة جداً (مثل iPhone SE) */
             .trust-item {
-                min-width: 100px;
+                min-width: 110px;
                 padding: 8px 8px !important;
                 font-size: 11px !important;
             }
@@ -1962,6 +1991,10 @@
             .trust-icon {
                 font-size: 1rem !important;
                 margin-left: 3px;
+            }
+            
+            .trust-item span {
+                font-size: 11px;
             }
             
             /* تحسين زر استعرض جميع المدربين للشاشات الصغيرة جداً */
@@ -1976,6 +2009,14 @@
                 padding: 10px 20px !important;
                 min-width: 160px;
                 font-size: 13px !important;
+            }
+            
+            .hero h1 {
+                font-size: 1.7rem !important;
+            }
+            
+            .hero p {
+                font-size: 0.95rem !important;
             }
         }
         
@@ -2267,14 +2308,14 @@
         </div>
     </div>
 
-    <!-- الهيرو سكشن -->
+    <!-- الهيرو سكشن - تم تحسينه للهاتف -->
     <section class="hero lazy-load">
         <div class="hero-content">
             <h1>القيادة الرياضية تبدأ هنا</h1>
             <p>انضم إلى مجتمع المدربين والرياضيين المحترفين الذين يرفعون معايير التدريب الرياضي عالميًا</p>
             <button class="btn btn-primary hero-cta focus-ring" onclick="showRegister()">ابدأ رحلتك المهنية</button>
             
-            <!-- مؤشرات الثقة - تم تعديل الترتيب للجوال -->
+            <!-- مؤشرات الثقة - تم تحسينها للهاتف -->
             <div class="trust-indicators">
                 <div class="trust-item">
                     <i class="fas fa-shield-alt trust-icon"></i>
