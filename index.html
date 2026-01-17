@@ -1287,46 +1287,6 @@
             100% { transform: scale(1); }
         }
         
-        /* === تجربة الموبايل الممتازة === */
-        .mobile-bottom-nav {
-            display: none;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-            background: white;
-            box-shadow: 0 -2px 20px rgba(0,0,0,0.1);
-            z-index: 1000;
-            padding: var(--space-sm) var(--space-md);
-        }
-        
-        .mobile-nav-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: var(--space-sm);
-        }
-        
-        .mobile-nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-decoration: none;
-            color: var(--dark-gray);
-            font-size: 12px;
-            padding: var(--space-xs);
-            border-radius: 10px;
-            transition: all 0.3s;
-        }
-        
-        .mobile-nav-item.active {
-            background: rgba(26, 86, 219, 0.1);
-            color: var(--primary-blue);
-        }
-        
-        .mobile-nav-icon {
-            font-size: 1.25rem;
-            margin-bottom: 4px;
-        }
-        
         /* === تحسينات المدخلات === */
         .form-input, .form-select {
             width: 100%;
@@ -1407,10 +1367,6 @@
             
             .hero p {
                 font-size: 1.1rem;
-            }
-            
-            .mobile-bottom-nav {
-                display: block;
             }
             
             .scroll-top {
@@ -1844,15 +1800,6 @@
                 box-shadow: var(--shadow-layered) !important;
             }
             
-            /* تحسين شريط التنقل السفلي */
-            .mobile-bottom-nav {
-                display: block;
-            }
-            
-            .mobile-nav-item {
-                padding: 10px 5px;
-            }
-            
             /* منع التمرير الأفقية غير المقصودة */
             html, body {
                 overflow-x: hidden;
@@ -1965,18 +1912,6 @@
             
             .stat {
                 margin-bottom: 10px;
-            }
-            
-            .mobile-bottom-nav {
-                padding: 10px 15px !important;
-            }
-            
-            .mobile-nav-icon {
-                font-size: 1.1rem !important;
-            }
-            
-            .mobile-nav-item {
-                font-size: 11px !important;
             }
         }
         
@@ -2798,36 +2733,6 @@
         </div>
     </footer>
 
-    <!-- شريط التنقل السفلي للجوال -->
-    <nav class="mobile-bottom-nav">
-        <div class="mobile-nav-grid">
-            <a href="#" class="mobile-nav-item active">
-                <div class="mobile-nav-icon">
-                    <i class="fas fa-home"></i>
-                </div>
-                <span>الرئيسية</span>
-            </a>
-            <a href="#coaches" class="mobile-nav-item">
-                <div class="mobile-nav-icon">
-                    <i class="fas fa-users"></i>
-                </div>
-                <span>المدربون</span>
-            </a>
-            <a href="#content" class="mobile-nav-item">
-                <div class="mobile-nav-icon">
-                    <i class="fas fa-book"></i>
-                </div>
-                <span>المحتوى</span>
-            </a>
-            <a href="#jobs" class="mobile-nav-item">
-                <div class="mobile-nav-icon">
-                    <i class="fas fa-briefcase"></i>
-                </div>
-                <span>الوظائف</span>
-            </a>
-        </div>
-    </nav>
-
     <!-- نموذج تسجيل الدخول -->
     <div id="loginModal" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.8); z-index: 2000; overflow-y: auto;">
         <div style="position: absolute; top: 50%; right: 50%; transform: translate(50%, -50%); background: white; border-radius: 20px; padding: var(--space-xl); width: 90%; max-width: 400px;">
@@ -3262,14 +3167,6 @@
                     top: targetElement.offsetTop - 80,
                     behavior: 'smooth'
                 });
-                
-                // إغلاق القائمة المتنقلة على الجوال
-                if (window.innerWidth <= 768) {
-                    document.querySelectorAll('.mobile-nav-item').forEach(item => {
-                        item.classList.remove('active');
-                    });
-                    this.classList.add('active');
-                }
             }
         }
         
@@ -3742,23 +3639,6 @@
             @keyframes fadeOut {
                 from { opacity: 1; }
                 to { opacity: 0; }
-            }
-            
-            /* تحسينات الجوال */
-            @media (max-width: 768px) {
-                .mobile-nav-item.active {
-                    background: rgba(26, 86, 219, 0.1);
-                    color: var(--primary-blue);
-                }
-                
-                .mobile-nav-item:active {
-                    background: rgba(26, 86, 219, 0.2);
-                }
-                
-                .mobile-menu-link a.active {
-                    color: var(--primary-blue);
-                    font-weight: 600;
-                }
             }
         `;
         document.head.appendChild(style);
