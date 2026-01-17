@@ -2275,49 +2275,50 @@
             <p class="section-subtitle">اختر من بين أكثر من 40 تخصص رياضي لتطوير مهاراتك والانضمام إلى مجتمع المحترفين</p>
         </div>
         <div class="sports-grid">
-            <div class="sport-card focus-ring" onclick="selectSport('كرة القدم')" tabindex="0">
+            <!-- تم تغيير onClick لجميع بطاقات الرياضات لفتح نافذة التسجيل -->
+            <div class="sport-card focus-ring" onclick="showRegister()" tabindex="0">
                 <div class="sport-icon">
                     <i class="fas fa-futbol"></i>
                 </div>
                 <div class="sport-name">كرة القدم</div>
             </div>
-            <div class="sport-card focus-ring" onclick="selectSport('كرة السلة')" tabindex="0">
+            <div class="sport-card focus-ring" onclick="showRegister()" tabindex="0">
                 <div class="sport-icon">
                     <i class="fas fa-basketball-ball"></i>
                 </div>
                 <div class="sport-name">كرة السلة</div>
             </div>
-            <div class="sport-card focus-ring" onclick="selectSport('السباحة')" tabindex="0">
+            <div class="sport-card focus-ring" onclick="showRegister()" tabindex="0">
                 <div class="sport-icon">
                     <i class="fas fa-swimmer"></i>
                 </div>
                 <div class="sport-name">السباحة</div>
             </div>
-            <div class="sport-card focus-ring" onclick="selectSport('ألعاب القوى')" tabindex="0">
+            <div class="sport-card focus-ring" onclick="showRegister()" tabindex="0">
                 <div class="sport-icon">
                     <i class="fas fa-running"></i>
                 </div>
                 <div class="sport-name">ألعاب القوى</div>
             </div>
-            <div class="sport-card focus-ring" onclick="selectSport('التنس')" tabindex="0">
+            <div class="sport-card focus-ring" onclick="showRegister()" tabindex="0">
                 <div class="sport-icon">
                     <i class="fas fa-table-tennis"></i>
                 </div>
                 <div class="sport-name">التنس</div>
             </div>
-            <div class="sport-card focus-ring" onclick="selectSport('الفنون القتالية')" tabindex="0">
+            <div class="sport-card focus-ring" onclick="showRegister()" tabindex="0">
                 <div class="sport-icon">
                     <i class="fas fa-user-ninja"></i>
                 </div>
                 <div class="sport-name">الفنون القتالية</div>
             </div>
-            <div class="sport-card focus-ring future-feature" onclick="selectSport('الرياضات الذهنية')" tabindex="0">
+            <div class="sport-card focus-ring future-feature" onclick="showRegister()" tabindex="0">
                 <div class="sport-icon">
                     <i class="fas fa-chess"></i>
                 </div>
                 <div class="sport-name">الرياضات الذهنية</div>
             </div>
-            <div class="sport-card focus-ring" onclick="selectSport('المزيد')" tabindex="0">
+            <div class="sport-card focus-ring" onclick="showRegister()" tabindex="0">
                 <div class="sport-icon">
                     <i class="fas fa-ellipsis-h"></i>
                 </div>
@@ -2405,7 +2406,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-outline" style="width: 100%; margin-top: var(--space-md);" onclick="viewCoachProfile('محمد العلي')">عرض الملف الشخصي</button>
+                <button class="btn btn-outline" style="width: 100%; margin-top: var(--space-md);" onclick="showRegister()">عرض الملف الشخصي</button>
             </div>
             
             <div class="coach-card focus-ring" data-sport="basketball">
@@ -2443,7 +2444,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-outline" style="width: 100%; margin-top: var(--space-md);" onclick="viewCoachProfile('سارة خالد')">عرض الملف الشخصي</button>
+                <button class="btn btn-outline" style="width: 100%; margin-top: var(--space-md);" onclick="showRegister()">عرض الملف الشخصي</button>
             </div>
             
             <div class="coach-card focus-ring" data-sport="fitness">
@@ -2481,11 +2482,12 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-outline" style="width: 100%; margin-top: var(--space-md);" onclick="viewCoachProfile('علي حسن')">عرض الملف الشخصي</button>
+                <button class="btn btn-outline" style="width: 100%; margin-top: var(--space-md);" onclick="showRegister()">عرض الملف الشخصي</button>
             </div>
         </div>
         <div style="text-align: center; margin-top: var(--space-xl);">
-            <button class="browse-coaches-btn focus-ring" onclick="showAllCoaches()">
+            <!-- تم تغيير زر استعرض جميع المدربين لفتح نافذة التسجيل -->
+            <button class="browse-coaches-btn focus-ring" onclick="showRegister()">
                 <span>استعرض جميع المدربين</span>
                 <i class="fas fa-arrow-left"></i>
             </button>
@@ -2523,7 +2525,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-outline" style="width: 100%; border-top-left-radius: 0; border-top-right-radius: 0;" onclick="viewContent('التحليل الفني الحديث في كرة القدم')">ابدأ التعلم</button>
+                <button class="btn btn-outline" style="width: 100%; border-top-left-radius: 0; border-top-right-radius: 0;" onclick="showRegister()">ابدأ التعلم</button>
             </div>
             
             <div class="content-card focus-ring" data-type="articles">
@@ -2544,7 +2546,7 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-outline" style="width: 100%; border-top-left-radius: 0; border-top-right-radius: 0;" onclick="viewContent('التغذية الرياضية للاعبين المحترفين')">اقرأ المقال</button>
+                <button class="btn btn-outline" style="width: 100%; border-top-left-radius: 0; border-top-right-radius: 0;" onclick="showRegister()">اقرأ المقال</button>
             </div>
             
             <div class="content-card focus-ring" data-type="webinars">
@@ -2565,11 +2567,12 @@
                         </div>
                     </div>
                 </div>
-                <button class="btn btn-outline" style="width: 100%; border-top-left-radius: 0; border-top-right-radius: 0;" onclick="viewContent('إدارة الفرق الرياضية في العصر الحديث')">سجل الآن</button>
+                <button class="btn btn-outline" style="width: 100%; border-top-left-radius: 0; border-top-right-radius: 0;" onclick="showRegister()">سجل الآن</button>
             </div>
         </div>
         <div style="text-align: center; margin-top: var(--space-xl);">
-            <button class="browse-courses-btn focus-ring" onclick="showAllCourses()">
+            <!-- تم تغيير زر استعرض الكورسات لفتح نافذة التسجيل -->
+            <button class="browse-courses-btn focus-ring" onclick="showRegister()">
                 <span>استعرض الكورسات</span>
                 <i class="fas fa-arrow-left"></i>
             </button>
@@ -2597,7 +2600,8 @@
                     </span>
                 </div>
                 <p>مطلوب مدرب كرة قدم متخصص في تدريب الناشئين (فئة تحت 16 سنة) للانضمام إلى أكاديمية النخبة</p>
-                <button class="btn btn-primary" style="margin-top: var(--space-sm);" onclick="applyJob()">التقديم للوظيفة</button>
+                <!-- تم تغيير زر التقديم للوظيفة لفتح نافذة التسجيل -->
+                <button class="btn btn-primary" style="margin-top: var(--space-sm);" onclick="showRegister()">التقديم للوظيفة</button>
             </div>
             <div class="job-card focus-ring">
                 <h3 class="job-title">أخصائي لياقة بدنية</h3>
@@ -2613,7 +2617,8 @@
                     </span>
                 </div>
                 <p>مطلوب أخصائي لياقة بدنية للعمل مع فريق كرة سلة محترف، مع خبرة لا تقل عن 3 سنوات</p>
-                <button class="btn btn-primary" style="margin-top: var(--space-sm);" onclick="applyJob()">التقديم للوظيفة</button>
+                <!-- تم تغيير زر التقديم للوظيفة لفتح نافذة التسجيل -->
+                <button class="btn btn-primary" style="margin-top: var(--space-sm);" onclick="showRegister()">التقديم للوظيفة</button>
             </div>
             <div class="job-card focus-ring">
                 <h3 class="job-title">مدرب سباحة معتمد</h3>
@@ -2629,7 +2634,8 @@
                     </span>
                 </div>
                 <p>مطلوب مدرب سباحة معتمد لتدريب الفريق الوطني للناشئين، مع شهادة دولية في الإنقاذ</p>
-                <button class="btn btn-primary" style="margin-top: var(--space-sm);" onclick="applyJob()">التقديم للوظيفة</button>
+                <!-- تم تغيير زر التقديم للوظيفة لفتح نافذة التسجيل -->
+                <button class="btn btn-primary" style="margin-top: var(--space-sm);" onclick="showRegister()">التقديم للوظيفة</button>
             </div>
         </div>
     </section>
@@ -3178,32 +3184,13 @@
                 card.style.transform = '';
             }, 150);
             
-            // رسالة ذكية
-            showMessage(`جارٍ تحميل محتوى ${sportName}...`, 'info');
-            
-            // محاكاة التحميل
-            setTimeout(() => {
-                showMessage(`تم فتح قسم ${sportName} بنجاح`, 'success');
-            }, 800);
+            // فتح نافذة التسجيل بدلاً من رسالة الذكية
+            showRegister();
         }
         
         function applyJob() {
-            const button = event.currentTarget;
-            const originalText = button.textContent;
-            
-            button.innerHTML = '<i class="fas fa-spinner fa-spin"></i> جاري التقديم...';
-            button.disabled = true;
-            
-            setTimeout(() => {
-                button.innerHTML = '<i class="fas fa-check"></i> تم التقديم بنجاح';
-                button.style.backgroundColor = '#10B981';
-                
-                setTimeout(() => {
-                    button.textContent = originalText;
-                    button.style.backgroundColor = '';
-                    button.disabled = false;
-                }, 2000);
-            }, 1500);
+            // فتح نافذة التسجيل بدلاً من محاكاة التقديم
+            showRegister();
         }
         
         function filterCoaches(filter) {
@@ -3230,110 +3217,13 @@
         }
         
         function viewCoachProfile(coachName) {
-            showMessage(`جارٍ تحميل ملف ${coachName}...`, 'info');
-            
-            setTimeout(() => {
-                showMessage(`تم فتح ملف ${coachName} بنجاح`, 'success');
-            }, 1000);
+            // فتح نافذة التسجيل بدلاً من رسالة الذكية
+            showRegister();
         }
         
-        // === زر استعرض جميع المدربين - تم تحسينه ===
         function showAllCoaches() {
-            const button = event.currentTarget;
-            const originalHTML = button.innerHTML;
-            
-            // تأثير التحميل
-            button.classList.add('loading');
-            button.innerHTML = '<i class="fas fa-spinner"></i> جاري التحميل...';
-            
-            // محاكاة تحميل المدربين
-            setTimeout(() => {
-                // إظهار رسالة نجاح
-                showMessage('تم تحميل جميع المدربين بنجاح!', 'success');
-                
-                // إضافة مدربين جدد (محاكاة)
-                const coachesGrid = document.querySelector('.coaches-grid');
-                const newCoaches = [
-                    {
-                        name: 'فهد المطيري',
-                        specialty: 'مدرب ألعاب قوى',
-                        location: 'جدة، السعودية',
-                        experience: '7+ عام خبرة',
-                        athletes: '150+ رياضي درّبهم',
-                        rating: '4.7'
-                    },
-                    {
-                        name: 'لمى عبدالله',
-                        specialty: 'مدربة تنس معتمدة',
-                        location: 'المنامة، البحرين',
-                        experience: '9+ عام خبرة',
-                        athletes: '120+ لاعب درّبتهم',
-                        rating: '4.9'
-                    },
-                    {
-                        name: 'ياسر النجار',
-                        specialty: 'أخصائي تأهيل رياضي',
-                        location: 'عمان، الأردن',
-                        experience: '11+ عام خبرة',
-                        athletes: '300+ رياضي تأهلهم',
-                        rating: '4.8'
-                    }
-                ];
-                
-                // إضافة المدربين الجدد
-                newCoaches.forEach(coach => {
-                    const coachCard = document.createElement('div');
-                    coachCard.className = 'coach-card focus-ring';
-                    coachCard.innerHTML = `
-                        <div class="coach-header">
-                            <div class="coach-avatar">${coach.name.charAt(0)}</div>
-                            <div class="coach-info">
-                                <h3>${coach.name}</h3>
-                                <div class="coach-specialty">${coach.specialty}</div>
-                                <div class="coach-location">
-                                    <i class="fas fa-map-marker-alt"></i> ${coach.location}
-                                </div>
-                                <div class="verified-badge" style="margin-top: 6px;">
-                                    <i class="fas fa-check-circle"></i> مدرب موثّق
-                                </div>
-                            </div>
-                        </div>
-                        <p>متخصص في ${coach.specialty.toLowerCase()} مع خبرة طويلة في التدريب الاحترافي</p>
-                        <div class="coach-stats">
-                            <div class="stat">
-                                <div class="stat-number">${coach.experience.split('+')[0]}+</div>
-                                <div class="stat-label">عام خبرة</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-number">${coach.athletes.split('+')[0]}+</div>
-                                <div class="stat-label">${coach.specialty.includes('تنس') ? 'لاعب درّبتهم' : coach.specialty.includes('تأهيل') ? 'رياضي تأهلهم' : 'رياضي درّبهم'}</div>
-                            </div>
-                            <div class="stat">
-                                <div class="stat-number">${coach.rating}</div>
-                                <div class="stat-label rating">
-                                    ${'<i class="fas fa-star"></i>'.repeat(4)}${coach.rating === '4.7' ? '<i class="fas fa-star-half-alt"></i>' : '<i class="fas fa-star"></i>'}
-                                </div>
-                            </div>
-                        </div>
-                        <button class="btn btn-outline" style="width: 100%; margin-top: var(--space-md);" onclick="viewCoachProfile('${coach.name}')">عرض الملف الشخصي</button>
-                    `;
-                    coachesGrid.appendChild(coachCard);
-                });
-                
-                // إعادة الزر إلى حالته الأصلية
-                button.classList.remove('loading');
-                button.innerHTML = originalHTML;
-                
-                // إظهار رسالة توجيهية
-                showMessage('تم إضافة ٣ مدربين جدد للقائمة', 'info');
-                
-                // تمرير سلس إلى القسم
-                window.scrollTo({
-                    top: document.getElementById('coaches').offsetTop - 80,
-                    behavior: 'smooth'
-                });
-                
-            }, 2000);
+            // فتح نافذة التسجيل بدلاً من محاكاة التحميل
+            showRegister();
         }
         
         function filterContent(filter) {
@@ -3360,98 +3250,13 @@
         }
         
         function viewContent(contentName) {
-            showMessage(`جارٍ فتح ${contentName}...`, 'info');
-            
-            setTimeout(() => {
-                showMessage(`تم فتح ${contentName} بنجاح`, 'success');
-            }, 1000);
+            // فتح نافذة التسجيل بدلاً من رسالة الذكية
+            showRegister();
         }
         
-        // === زر استعرض الكورسات - تم تحسينه ===
         function showAllCourses() {
-            const button = event.currentTarget;
-            const originalHTML = button.innerHTML;
-            
-            // تأثير التحميل
-            button.classList.add('loading');
-            button.innerHTML = '<i class="fas fa-spinner"></i> جاري التحميل...';
-            
-            // محاكاة تحميل الكورسات
-            setTimeout(() => {
-                // إظهار رسالة نجاح
-                showMessage('تم تحميل جميع الكورسات بنجاح!', 'success');
-                
-                // إضافة كورسات جديدة (محاكاة)
-                const contentGrid = document.querySelector('.content-grid');
-                const newCourses = [
-                    {
-                        title: 'التدريب الذهني للرياضيين',
-                        category: 'دورة تدريبية',
-                        level: 'مستوى متوسط',
-                        duration: '٦ ساعات',
-                        author: 'د. خالد سعيد',
-                        description: 'تعلم تقنيات التدريب الذهني لتعزيز التركيز والأداء الرياضي'
-                    },
-                    {
-                        title: 'الإعداد البدني في كرة السلة',
-                        category: 'دورة تدريبية',
-                        level: 'مستوى متقدم',
-                        duration: '١٠ ساعات',
-                        author: 'أ. محمد عبدالرحمن',
-                        description: 'برامج متقدمة للإعداد البدني للاعبي كرة السلة المحترفين'
-                    },
-                    {
-                        title: 'تحليل البيانات الرياضية',
-                        category: 'دورة تدريبية',
-                        level: 'مستوى مبتدئ',
-                        duration: '٤ ساعات',
-                        author: 'د. نورا العلي',
-                        description: 'أساسيات تحليل البيانات الرياضية لاتخاذ القرارات التدريبية'
-                    }
-                ];
-                
-                // إضافة الكورسات الجديدة
-                newCourses.forEach(course => {
-                    const contentCard = document.createElement('div');
-                    contentCard.className = 'content-card focus-ring';
-                    contentCard.setAttribute('data-type', 'courses');
-                    contentCard.innerHTML = `
-                        <div class="content-image">
-                            <div class="content-level">${course.level}</div>
-                            <i class="fas fa-graduation-cap"></i>
-                        </div>
-                        <div class="content-info">
-                            <span class="content-category">${course.category}</span>
-                            <h3 class="content-title">${course.title}</h3>
-                            <p>${course.description}</p>
-                            <div class="content-meta">
-                                <div class="content-duration">
-                                    <i class="fas fa-clock"></i> ${course.duration}
-                                </div>
-                                <div class="content-author">
-                                    <i class="fas fa-user"></i> ${course.author}
-                                </div>
-                            </div>
-                        </div>
-                        <button class="btn btn-outline" style="width: 100%; border-top-left-radius: 0; border-top-right-radius: 0;" onclick="viewContent('${course.title}')">ابدأ التعلم</button>
-                    `;
-                    contentGrid.appendChild(contentCard);
-                });
-                
-                // إعادة الزر إلى حالته الأصلية
-                button.classList.remove('loading');
-                button.innerHTML = originalHTML;
-                
-                // إظهار رسالة توجيهية
-                showMessage('تم إضافة ٣ كورسات جديدة للقائمة', 'info');
-                
-                // تمرير سلس إلى القسم
-                window.scrollTo({
-                    top: document.getElementById('content').offsetTop - 80,
-                    behavior: 'smooth'
-                });
-                
-            }, 2000);
+            // فتح نافذة التسجيل بدلاً من محاكاة التحميل
+            showRegister();
         }
         
         function showRegister() {
